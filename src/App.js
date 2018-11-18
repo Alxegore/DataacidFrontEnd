@@ -143,16 +143,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      Xinput: "",
-      Yinput: "",
-      firstData: "",
-      secondData: "",
-      img: "",
-      selected_Xinput: "Overall",
-      selected_Yinput: "StudentStaff",
-      selected_firstData: "Top 500",
-      selected_secondData: "None",
-      createdGraph: false,
+      selectedStaffID: "1",
       address: "",
       email: "",
       birthdate: "",
@@ -164,28 +155,65 @@ class App extends Component {
       salary: "",
       sex: "",
       staffID: "",
+      value: "",
+      value2: "",
     }
-    this.handleXinput = this.handleXinput.bind(this)
-    this.handleYinput = this.handleYinput.bind(this)
-    this.handleFirstData = this.handleFirstData.bind(this)
-    this.handleSecondData = this.handleSecondData.bind(this)
+    this.handleSelectedStaffID = this.handleSelectedStaffID.bind(this)
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async createGraph(Xinput, Yinput, firstData, secondData) {
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(e) {
+    alert('A name was submitted: ' + this.state.value);
+    this.setState({
+      value2: this.state.value
+    })
+
+    e.preventDefault();
+  }
+  async postDoctor(value2) {
     let formData = new FormData();
-    formData.append('Xinput', Xinput);
-    formData.append('Yinput', Yinput);
-    formData.append('firstData', firstData);
-    formData.append('secondData', secondData);
-    var response = await fetch(`${config.apiPath}/api/medical_staff/2`,
+    formData.append('firstname', value2);
+    formData.append('lastname', value2);
+    formData.append('sex', "Male");
+    formData.append('salary', 2000);
+    formData.append('mobile_tel', "6337858266");
+    formData.append('home_tel', "6337858266");
+    formData.append('address', value2);
+    formData.append('email', "eqsk134@gmail.com");
+    formData.append('doctor_type', "Doctor");
+    formData.append('birthdate', new Date('05 October 2011 14:48 UTC').toISOString());
+    var response = await fetch(`${config.apiPath}/api/medical_staff/doctor`,
+      {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+  }
+
+  handleSelectedStaffID(e) {
+    this.setState({
+      selectedStaffID: e.target.value
+    })
+  }
+
+  async getMedicalStaffbyID(selectedStaffID) {
+
+    var response = await fetch(`${config.apiPath}/api/medical_staff/` + selectedStaffID,
       {
         method: 'GET',
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'multipart/form-data'
         },
-        // method: 'post',
-        // body: formData
       })
     var data = await response.json()
     console.log(data)
@@ -207,60 +235,13 @@ class App extends Component {
 
   XinputList() {
     var returnVal = [];
-    var gList = ['Overall', 'Teaching', 'Research', 'Citations', 'IndustryIncome', 'InterOutlook', 'StudentStaff', 'InterStudent', 'Female'];
+    var gList = ['1', '2', '3', '4', '5', '6', '7'];
     for (var i = 0; i < gList.length; i++) {
       returnVal.push(<option value={gList[i]}>{gList[i]}</option>)
     }
     return returnVal
   }
 
-  YinputList() {
-    var returnVal = [];
-    var gList = ['Overall', 'Teaching', 'Research', 'Citations', 'IndustryIncome', 'InterOutlook', 'StudentStaff', 'InterStudent', 'Female'];
-    for (var i = 0; i < gList.length; i++) {
-      returnVal.push(<option value={gList[i]}>{gList[i]}</option>)
-    }
-    return returnVal
-  }
-
-  firstDataList() {
-    var returnVal = [];
-    var gList = ['Top 500', 'Top 200', 'USA', 'China'];
-    for (var i = 0; i < gList.length; i++) {
-      returnVal.push(<option value={gList[i]}>{gList[i]}</option>)
-    }
-    return returnVal
-  }
-
-  secondDataList() {
-    var returnVal = [];
-    var gList = ['None', 'Top 200', 'USA', 'China'];
-    for (var i = 0; i < gList.length; i++) {
-      returnVal.push(<option value={gList[i]}>{gList[i]}</option>)
-    }
-    return returnVal
-  }
-
-  handleXinput(e) {
-    this.setState({
-      selected_Xinput: e.target.value
-    })
-  }
-  handleYinput(e) {
-    this.setState({
-      selected_Yinput: e.target.value
-    })
-  }
-  handleFirstData(e) {
-    this.setState({
-      selected_firstData: e.target.value
-    })
-  }
-  handleSecondData(e) {
-    this.setState({
-      selected_secondData: e.target.value
-    })
-  }
   render() {
     console.log(this.state)
     return (
@@ -268,42 +249,21 @@ class App extends Component {
         {/* <Image2 src="http://static.siuk-thailand.com/assets/images/thelogoforcms.jpg" align="middle" /> */}
         <Header>Hospital Management System</Header>
         <BoxPanel>
-          <h1> Score Box Plot </h1>
-          <Image src="/img/1.png" />
-          <Image src="/img/3.png" />
-          <Image src="/img/4.png" />
+          <h1> *Interseting Data is Coming to Town* </h1>
         </BoxPanel>
         <Panel>
           <h2>What do you want to know?</h2>
           <div class="input1">
-            Xinput : &nbsp;
-          <Selector value={this.state.selected_Xinput} onChange={this.handleXinput}>
+            selectedStaffID : &nbsp;
+          <Selector value={this.state.selectedStaffID} onChange={this.handleSelectedStaffID}>
               {this.XinputList()}
             </Selector>
           </div>
-          <div class="input2">
-            Yinput : &nbsp;
-          <Selector value={this.state.selected_Yinput} onChange={this.handleYinput}>
-              {this.YinputList()}
-            </Selector>
-          </div>
-          <div class="input3">
-            Main Data : &nbsp;
-          <Selector value={this.state.selected_firstData} onChange={this.handleFirstData}>
-              {this.firstDataList()}
-            </Selector>
-          </div>
-          <div class="input4">
-            Second Data : &nbsp;
-          <Selector value={this.state.selected_secondData} onChange={this.handleSecondData}>
-              {this.secondDataList()}
-            </Selector>
-          </div>
-          <Button onClick={() => this.createGraph(this.state.selected_Xinput, this.state.selected_Yinput, this.state.selected_firstData, this.state.selected_secondData)} > Show Pls</Button>
+          <Button onClick={() => this.getMedicalStaffbyID(this.state.selectedStaffID)} > Show Pls</Button>
         </Panel>
         <Panel2>
+          <h1> Show Medical Staff Data as you requested</h1>
           <div>
-            <h1> Show Medical Staff Data as you requested</h1>
             <div>{"Show " + "Address: " + this.state.address}</div>
             <br /><div>{"Show " + "Birthdate: " + this.state.birthdate}</div>
             <br /><div>{"Show " + "Email: " + this.state.email}</div>
@@ -318,15 +278,80 @@ class App extends Component {
           </div>
         </Panel2>
         <Panel3>
-          <div>
-            {"Show " + this.state.Yinput}
-          </div>
+          <h1>
+            Submit Medical Staff Data to Server
+          </h1>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <label>
+                Staff_ID:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                First_name:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Last_name:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Email:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Birthdate:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Medical_type:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Home_tel:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Mobile_tel:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Sex:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <label>
+                Salary:
+              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              </label>
+            </div>
+            <br /><div>
+              <input type="submit" value="Submit" onClick={() => this.postDoctor(this.state.value)} />
+            </div>
+          </form>
         </Panel3>
         <Graph>
-          {
+          {/* {
             (this.state.createdGraph == false) ? "Wait a Minute" : <div><h1>{"Show " + this.state.Xinput + " with " + this.state.Yinput}</h1>
               <Image src={"http://159.89.197.13:80/" + this.state.img} /><br /></div>
-          }
+          } */}
 
         </Graph>
       </Container>
