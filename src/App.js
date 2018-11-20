@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import config from "./config";
-import axios from "axios";
+import $ from "jquery";
 
 const Container = styled.div`
   width: 100%;
@@ -176,26 +176,18 @@ class App extends Component {
     e.preventDefault();
   }
   async postDoctor(value2) {
-    const res = await axios.post(
-      `${config.apiPath}/api/medical_staff/doctor`,
-      {
-        firstname: value2,
-        lastname: value2,
-        sex: "Male",
-        salary: 2000,
-        mobile_tel: "6337858266",
-        home_tel: "6337858266",
-        address: value2,
-        email: "eqsk134@gmail.com",
-        doctor_type: "Doctor",
-        birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
-      },
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      }
-    );
+    const res = await $.post(`${config.apiPath}/api/medical_staff/doctor`, {
+      firstname: value2,
+      lastname: value2,
+      sex: "Male",
+      salary: 2000,
+      mobile_tel: "6337858266",
+      home_tel: "6337858266",
+      address: value2,
+      email: "eqsk134@gmail.com",
+      doctor_type: "Doctor",
+      birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
+    });
   }
 
   handleSelectedStaffID(e) {
@@ -205,7 +197,10 @@ class App extends Component {
   }
 
   async getMedicalStaffbyID(selectedStaffID) {
-    var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
+    // var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
+    const data = await $.get(
+      `${config.apiPath}/api/medical_staff/` + selectedStaffID
+    );
     this.setState({
       address: data.Address,
       birthdate: data.Birthdate,
