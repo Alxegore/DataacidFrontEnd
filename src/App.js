@@ -101,10 +101,43 @@ const Panel3 = styled.div`
   }
 `;
 
+const Panel4 = styled.div`
+  grid-column: 1;
+  grid-row: 5;
+  background: rgba(166, 166, 83, 0.5);
+  overflow: hidden;
+  height: 500px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+const Panel5 = styled.div`
+  grid-column: 2;
+  grid-row: 5;
+  background: rgba(166, 166, 83, 0.5);
+  overflow: hidden;
+  height: 500px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+
 const Graph = styled.div`
   position: relative;
   grid-column: 1 / span 2;
-  grid-row: 5 / span 2;
+  grid-row: 6 / span 2;
   background: rgba(105, 83, 105, 0.5);
   text-align: center;
   overflow: hidden;
@@ -416,11 +449,166 @@ class App extends Component {
               <input
                 type="submit"
                 value="Submit"
-                onClick={() => this.deleteMedicalStaff(this.state.value)}
+                onClick={() => this.postDoctor(this.state.value)}
               />
             </div>
           </form>
         </Panel3>
+        <Panel4>
+          <h1>Edit Medical Staff Data as you want</h1>
+          <form onSubmit={this.handleSubmit}>
+            <div>
+              <label>
+                Staff_ID:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                First_name:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Last_name:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Email:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Birthdate:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Medical_type:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Home_tel:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Mobile_tel:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Sex:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Salary:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <input
+                type="submit"
+                value="Submit"
+                onClick={() => this.patchMedicalStaff(this.state.value)}
+              />
+            </div>
+          </form>
+        </Panel4>
+        <Panel5>
+          <h1> Show Medical Staff Data that you Deleted</h1>
+          <div>
+            <input
+              type="submit"
+              value="Submit"
+              onClick={() => this.deleteMedicalStaff(this.state.value)}
+            />
+          </div>
+          <div>
+            <div>{"Show " + "Address: " + this.state.address}</div>
+            <br />
+            <div>{"Show " + "Birthdate: " + this.state.birthdate}</div>
+            <br />
+            <div>{"Show " + "Email: " + this.state.email}</div>
+            <br />
+            <div>{"Show " + "First_name: " + this.state.firstName}</div>
+            <br />
+            <div>{"Show " + "Home_tel: " + this.state.homeTel}</div>
+            <br />
+            <div>{"Show " + "Last_name: " + this.state.lastName}</div>
+            <br />
+            <div>{"Show " + "Medical_type:  " + this.state.medicalType}</div>
+            <br />
+            <div>{"Show " + "Mobile_tel:  " + this.state.mobileTel}</div>
+            <br />
+            <div>{"Show " + "Salary:  " + this.state.salary}</div>
+            <br />
+            <div>{"Show " + "Sex:  " + this.state.sex}</div>
+            <br />
+            <div>{"Show " + "Staff_ID:  " + this.state.staffID}</div>
+          </div>
+        </Panel5>
         <Graph>
           {/* {
             (this.state.createdGraph == false) ? "Wait a Minute" : <div><h1>{"Show " + this.state.Xinput + " with " + this.state.Yinput}</h1>
