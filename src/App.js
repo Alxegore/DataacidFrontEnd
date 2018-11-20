@@ -189,6 +189,27 @@ class App extends Component {
       birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
     });
   }
+  async patchMedicalStaff(value2) {
+    await $.ajax({
+      url: `${config.apiPath}/api/medical_staff/` + '1009', type: "PATCH", data: {
+        firstname: value2,
+        lastname: value2,
+        sex: "Male",
+        salary: 2000,
+        mobile_tel: "6337858266",
+        home_tel: "6337858266",
+        address: value2,
+        email: "eqsk134@gmail.com",
+        doctor_type: "Doctor",
+        birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
+      }
+    });
+  }
+  async deleteMedicalStaff(value2) {
+    await $.ajax({
+      url: `${config.apiPath}/api/medical_staff/` + '1009', type: "DELETE"
+    });
+  }
 
   handleSelectedStaffID(e) {
     this.setState({
@@ -395,7 +416,7 @@ class App extends Component {
               <input
                 type="submit"
                 value="Submit"
-                onClick={() => this.postDoctor(this.state.value)}
+                onClick={() => this.deleteMedicalStaff(this.state.value)}
               />
             </div>
           </form>
