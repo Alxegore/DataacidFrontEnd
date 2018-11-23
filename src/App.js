@@ -283,19 +283,23 @@ class App extends Component {
     const data = await $.get(
       `${config.apiPath}/api/medical_staff/` + selectedStaffID
     );
-    this.setState({
-      address: data.Address,
-      birthdate: data.Birthdate,
-      email: data.Email,
-      firstName: data.First_name,
-      lastName: data.Last_name,
-      homeTel: data.Home_tel,
-      medicalType: data.Medical_type,
-      mobileTel: data.Mobile_tel,
-      salary: data.Salary,
-      sex: data.Sex,
-      staffID: data.Staff_ID
-    });
+    try {
+      this.setState({
+        address: data.Address,
+        birthdate: data.Birthdate,
+        email: data.Email,
+        firstName: data.First_name,
+        lastName: data.Last_name,
+        homeTel: data.Home_tel,
+        medicalType: data.Medical_type,
+        mobileTel: data.Mobile_tel,
+        salary: data.Salary,
+        sex: data.Sex,
+        staffID: data.Staff_ID
+      });
+    } catch (error) {
+
+    }
   }
 
   XinputList() {
@@ -318,7 +322,7 @@ class App extends Component {
         </BoxPanel>
         <Panel>
           <h2>What do you want to know?</h2>
-          <div class="input1">
+          {/* <div class="input1">
             selectedStaffID : &nbsp;
             <Selector
               value={this.state.selectedStaffID}
@@ -326,7 +330,15 @@ class App extends Component {
             >
               {this.XinputList()}
             </Selector>
-          </div>
+          </div> */}
+          <label>
+            selectedStaffID :
+                <input
+              type="text"
+              value={this.state.selectedStaffID}
+              onChange={this.handleChange('selectedStaffID')}
+            />
+          </label>
           <Button
             onClick={() => this.getMedicalStaffbyID(this.state.selectedStaffID)}
           >
