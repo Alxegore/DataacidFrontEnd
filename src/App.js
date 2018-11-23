@@ -6,11 +6,12 @@ import $ from "jquery";
 const Container = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 800px 800px;
+  grid-template-columns: 600px 600px;
   grid-gap: 20px 20px;
   min-width: 0;
   min-height: 0;
   font-family: "Roboto", sans-serif;
+  color: rgb(105,105,105);
 `;
 
 const Image = styled.img`
@@ -37,12 +38,13 @@ const Header = styled.div`
   grid-column: 1 / span2;
   grid-row: 1;
   text-align: center;
-  font-family: "Pacifico", cursive;
+  font-family: Impact, Charcoal, sans-serif;
 `;
+
 const BoxPanel = styled.div`
   grid-column: 1 / span 2;
   grid-row: 2;
-  background: rgba(83, 166, 166, 0.5);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 450px;
   padding: 15px;
@@ -55,7 +57,7 @@ const BoxPanel = styled.div`
 const Panel = styled.div`
   grid-column: 1 / span 2;
   grid-row: 3;
-  background: rgba(166, 166, 83, 0.5);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 150px;
   padding: 15px;
@@ -71,9 +73,9 @@ const Panel = styled.div`
 const Panel2 = styled.div`
   grid-column: 1;
   grid-row: 4;
-  background: rgba(166, 166, 83, 0.5);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 500px;
+  height: 550px;
   padding: 15px;
   div {
     display: inline-block;
@@ -87,9 +89,9 @@ const Panel2 = styled.div`
 const Panel3 = styled.div`
   grid-column: 2;
   grid-row: 4;
-  background: rgba(166, 166, 83, 0.5);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 500px;
+  height: 550px;
   padding: 15px;
   div {
     display: inline-block;
@@ -104,9 +106,9 @@ const Panel3 = styled.div`
 const Panel4 = styled.div`
   grid-column: 1;
   grid-row: 5;
-  background: rgba(166, 166, 83, 0.5);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 500px;
+  height: 550px;
   padding: 15px;
   div {
     display: inline-block;
@@ -120,9 +122,9 @@ const Panel4 = styled.div`
 const Panel5 = styled.div`
   grid-column: 2;
   grid-row: 5;
-  background: rgba(166, 166, 83, 0.5);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 500px;
+  height: 550px;
   padding: 15px;
   div {
     display: inline-block;
@@ -134,18 +136,6 @@ const Panel5 = styled.div`
   }
 `;
 
-const Graph = styled.div`
-  position: relative;
-  grid-column: 1 / span 2;
-  grid-row: 6 / span 2;
-  background: rgba(105, 83, 105, 0.5);
-  text-align: center;
-  overflow: hidden;
-  padding-bottom: 15px;
-  img {
-    position: relative;
-  }
-`;
 
 const Selector = styled.select`
   -webkit-appearance: none;
@@ -170,6 +160,88 @@ const Button = styled.button`
     cursor: pointer;
   }
 `;
+const Panel_Dept = styled.div`
+  grid-column: 1 / span 2;
+  grid-row: 6 ;
+  background: rgba(238, 223, 204, 1);
+  overflow: hidden;
+  height: 250px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+const Panel_Dept1 = styled.div`
+  grid-column: 1 ;
+  grid-row: 6;
+  background: rgba(	205, 183, 158, 1);
+  overflow: hidden;
+  height: 100px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+const Panel_Dept2 = styled.div`
+  grid-column: 2 ;
+  grid-row: 6;
+  background: rgba(205, 183, 158, 1);
+  overflow: hidden;
+  height: 100px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+
+const Panel_Patient1 = styled.div`
+  grid-column: 1 ;
+  grid-row: 7;
+  background: rgba(238, 223, 204, 1);
+  overflow: hidden;
+  height: 550px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+const Panel_Patient2 = styled.div`
+  grid-column: 2 ;
+  grid-row: 7;
+  background: rgba(238, 223, 204, 1);
+  overflow: hidden;
+  height: 550px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
+
 
 class App extends Component {
   constructor(props) {
@@ -200,6 +272,44 @@ class App extends Component {
       post_medical_salary: 0,
       post_medical_homeTel: "",
       post_medical_mobileTel: "",
+
+      departmentName: "",
+      location: "",
+      manager_ID: "",
+      manager_first_name: "",
+      manager_last_name: "",
+      manager_sex: "",
+      manager_tel: "",
+      showDLocation: "",
+      selectedDeptName: "",
+      showDeptName: "",
+      selectedManagerID: "",
+
+      patient_Address: "",
+      patient_Birthdate: "",
+      parent_first_name: "",
+      parent_last_name: "",
+      parent_phone_number: "",
+      patient_ID: "",
+      patient_first_name: "",
+      patient_last_name: "",
+      patient_phone_number: "",
+      patient_sex: "",
+      allergy_name: "",
+      selectedPatientID: "",
+
+      post_Patient_Address: "",
+      post_Patient_Birthdate: "",
+      post_Parent_first_name: "",
+      post_Parent_last_name: "",
+      post_Parent_phone_number: "",
+      post_Patient_first_name: "",
+      post_Patient_last_name: "",
+      post_Patient_phone_number: "",
+      post_Patient_sex: "",
+      post_Allergy_name: ""
+
+
     };
     this.handleSelectedStaffID = this.handleSelectedStaffID.bind(this);
 
@@ -210,7 +320,6 @@ class App extends Component {
   handleChange = field => event => {
     const value = {}
     value[field] = event.target.value
-    console.log(value)
     this.setState(value);
   }
 
@@ -284,6 +393,69 @@ class App extends Component {
     });
   }
 
+  async getLocationbyDeptName(Dept_Name){
+    const data = await $.get(
+      `${config.apiPath}/api/department`
+    );
+    console.log("555");
+    for(let i = 0 ; i < data.length ; i++){
+      if(data[i].DepartmentName == Dept_Name){
+        this.setState({
+          showDLocation: data[i].Location
+        });
+        break
+      }
+    }
+  }
+
+  async getDeptNamebyMID(Maneger_ID2){
+    const data = await $.get(
+      `${config.apiPath}/api/department`
+    );
+    for(let i = 0 ; i < data.length ; i++){
+      if(data[i].Manager_ID == Maneger_ID2){
+        this.setState({
+          showDeptName: data[i].DepartmentName
+        });
+        break
+      }
+    }
+  }
+
+  async getInformbyPatientID(selectedPatientID) {
+    const data = await $.get(
+      `${config.apiPath}/api/patient/` + selectedPatientID
+    );
+    console.log("55555");
+    this.setState({
+      patient_Address: data.Address,
+      patient_Birthdate: data.Birthdate,
+      patient_first_name: data.Patient_first_name,
+      patient_last_name: data.Patient_last_name,
+      parent_first_name: data.Parent_first_name,
+      parent_last_name: data.Parent_last_name,
+      parent_phone_number: data.Parent_phone_number,
+      patient_phone_number: data.Phone_number,
+      patient_sex: data.Sex,
+      allergy_name: data.Allergy_name
+    });
+  }
+
+  async postPatient(value2) {
+    const res = await $.post(`${config.apiPath}/api/patient`, {
+      address: this.state.post_Patient_Address,
+      birthdate: this.state.post_Patient_Birthdate,
+      firstname: this.state.post_Patient_first_name,
+      lastname: this.state.post_Patient_last_name,
+      parent_firstname: this.state.post_Parent_first_name,
+      parent_lastname: this.state.post_Parent_last_name,
+      parent_phone: this.state.post_Parent_phone_number,
+      phone: this.state.post_Patient_phone_number,
+      sex: this.state.post_Patient_sex,
+      allergy: this.state.post_Allergy_name
+    });
+  }
+
   XinputList() {
     var returnVal = [];
     var gList = ["1", "2", "3", "4", "5", "6", "7"];
@@ -300,7 +472,7 @@ class App extends Component {
         {/* <Image2 src="http://static.siuk-thailand.com/assets/images/thelogoforcms.jpg" align="middle" /> */}
         <Header>Hospital Management System</Header>
         <BoxPanel>
-          <h1> *Interseting Data is Coming to Town* </h1>
+          <h1> *Interesting Data is Coming to Town* </h1>
         </BoxPanel>
         <Panel>
           <h2>What do you want to know?</h2>
@@ -623,12 +795,205 @@ class App extends Component {
             <div>{"Show " + "Staff_ID:  " + this.state.staffID}</div>
           </div>
         </Panel5>
-        <Graph>
-          {/* {
-            (this.state.createdGraph == false) ? "Wait a Minute" : <div><h1>{"Show " + this.state.Xinput + " with " + this.state.Yinput}</h1>
-              <Image src={"http://159.89.197.13:80/" + this.state.img} /><br /></div>
-          } */}
-        </Graph>
+        <Panel_Dept>
+          <div>
+          < h2>Department Session</h2>
+          <Panel_Dept1>
+            <div class="input1">
+              Put the depratment's name : &nbsp;
+              <label>
+                  <input
+                    type="text"
+                    value={this.state.selectedDeptName}
+                    onChange={this.handleChange('selectedDeptName')}
+                  />
+              </label>
+            </div>
+            <Button
+              onClick={() => this.getLocationbyDeptName(this.state.selectedDeptName)}
+            >
+              {" "}
+              Search
+            </Button>
+            <br />
+            <div>{"Location: "+ this.state.showDLocation}</div>
+          </Panel_Dept1>   
+          <Panel_Dept2> 
+            <div class="input1">
+              Put the maneger's ID : &nbsp;
+              <label>
+                  <input
+                    type="text"
+                    value={this.state.selectedManagerID}
+                    onChange={this.handleChange('selectedManagerID')}
+                  />
+              </label>
+            </div>
+            <Button
+              onClick={() => this.getDeptNamebyMID(this.state.selectedManagerID)}
+            >
+              {" "}
+              Search
+            </Button>
+            <br />
+            <div>{"Department: "+ this.state.showDeptName}</div>
+          </Panel_Dept2>
+          </div>
+        </Panel_Dept>
+        <Panel_Patient1>
+          <div class="input1">
+              Please key patient ID : &nbsp;
+              <label>
+                  <input
+                    type="text"
+                    value={this.state.selectedPatientID}
+                    onChange={this.handleChange('selectedPatientID')}
+                  />
+              </label>
+            </div>
+            <Button
+              onClick={() => this.getInformbyPatientID(this.state.selectedPatientID)}
+            >
+              {" "}
+              Search
+            </Button>
+            <br />
+            <h3>Information</h3>
+              <div>
+                <div>{"First Name: " + this.state.patient_first_name}</div>
+                <br />
+                <div>{"Last Name: " + this.state.patient_last_name}</div>
+                <br />
+                <div>{"Sex:  " + this.state.patient_sex}</div>
+                <br />
+                <div>{"Address: " + this.state.patient_Address}</div>
+                <br />
+                <div>{"Birth Date: " + this.state.patient_Birthdate}</div>
+                <br />
+                <div>{"Phone Number: " + this.state.patient_phone_number}</div>
+                <br />
+                <div>{"Parent Name: " + this.state.parent_first_name + " " + this.state.parent_last_name}</div>
+                <br />
+                <div>{"Parent Phone Number:  " + this.state.parent_phone_number}</div>
+                <br />
+                <div>{"Allergy Name:  " + this.state.allergy_name}</div>
+            </div>
+          </Panel_Patient1>
+          <Panel_Patient2>
+            <h2>Add New Patient</h2>
+            <form onSubmit={this.handleSubmit}>
+            <div>
+              <label>
+                First_name: 
+                <input
+                  type="text"
+                  value={this.state.post_Patient_first_name}
+                  onChange={this.handleChange('post_Patient_first_name')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Last_name: 
+                <input
+                  type="text"
+                  value={this.state.post_Patient_last_name}
+                  onChange={this.handleChange('post_Patient_last_name')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Sex:
+                <input
+                  type="text"
+                  value={this.state.post_Patient_sex}
+                  onChange={this.handleChange('post_Patient_sex')}
+                />
+                <div>(eg. Male,Female )</div>
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Birthdate:
+                <input
+                  type="text"
+                  value={this.state.post_Patient_Birthdate}
+                  onChange={this.handleChange('post_Patient_Birthdate')}
+                />
+                <div>(eg. yyyy-mm-dd)</div>
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Phone Number:
+                <input
+                  type="text"
+                  value={this.state.post_Patient_phone_number}
+                  onChange={this.handleChange('post_Patient_phone_number')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Parent First Name:
+                <input
+                  type="text"
+                  value={this.state.post_Parent_first_name}
+                  onChange={this.handleChange('post_Parent_first_name')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Parent Last Name:
+                <input
+                  type="text"
+                  value={this.state.post_Parent_last_name}
+                  onChange={this.handleChange('post_Parent_last_name')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Parent Phone Number:
+                <input
+                  type="text"
+                  value={this.state.post_Parent_phone_number}
+                  onChange={this.handleChange('post_Parent_phone_number')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Allergy Name:
+                <input
+                  type="text"
+                  value={this.state.post_Allergy_name}
+                  onChange={this.handleChange('post_Allergy_name')}
+                />
+              </label>
+            </div>
+            <be />
+            <div> (eg. 'Peanut allergy,Shrimp') </div>
+            <br />
+            <div>
+              <input
+                type="submit"
+                value="Add"
+                onClick={() => this.postPatient(this.state.value)}
+              />
+            </div>
+          </form>
+          </Panel_Patient2>
       </Container>
     );
   }
