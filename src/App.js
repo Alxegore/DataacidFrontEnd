@@ -309,7 +309,6 @@ class App extends Component {
       post_Patient_sex: "",
       post_Allergy_name: ""
 
-
     };
     this.handleSelectedStaffID = this.handleSelectedStaffID.bind(this);
 
@@ -333,29 +332,29 @@ class App extends Component {
   }
   async postDoctor(value2) {
     const res = await $.post(`${config.apiPath}/api/medical_staff/doctor`, {
-      firstname: this.post_medical_firstName,
-      lastname: this.post_medical_lastName,
-      sex: this.post_medical_sex,
-      salary: this.post_medical_salary,
-      mobile_tel: this.post_medical_mobileTel,
-      home_tel: this.post_medical_homeTel,
-      address: this.post_medical_address,
-      email: this.post_medical_email,
+      firstname: this.state.post_medical_firstName,
+      lastname: this.state.post_medical_lastName,
+      sex: this.state.post_medical_sex,
+      salary: this.state.post_medical_salary,
+      mobile_tel: this.state.post_medical_mobileTel,
+      home_tel: this.state.post_medical_homeTel,
+      address: this.state.post_medical_address,
+      email: this.state.post_medical_email,
       doctor_type: "Doctor",
       birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
     });
   }
   async patchMedicalStaff(value2) {
     await $.ajax({
-      url: `${config.apiPath}/api/medical_staff/` + '1009', type: "PATCH", data: {
-        firstname: value2,
-        lastname: value2,
-        sex: "Male",
-        salary: 2000,
-        mobile_tel: "6337858266",
-        home_tel: "6337858266",
-        address: value2,
-        email: "eqsk134@gmail.com",
+      url: `${config.apiPath}/api/medical_staff/` + this.state.patch_medical_staffID, type: "PATCH", data: {
+        firstname: this.state.patch_medical_firstName,
+        lastname: this.state.patch_medical_lastName,
+        sex: this.state.patch_medical_sex,
+        salary: this.state.patch_medical_salary,
+        mobile_tel: this.state.patch_medical_mobileTel,
+        home_tel: this.state.patch_medical_homeTel,
+        address: this.state.patch_medical_address,
+        email: this.state.patch_medical_email,
         doctor_type: "Doctor",
         birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
       }
@@ -363,7 +362,7 @@ class App extends Component {
   }
   async deleteMedicalStaff(value2) {
     await $.ajax({
-      url: `${config.apiPath}/api/medical_staff/` + '1009', type: "DELETE"
+      url: `${config.apiPath}/api/medical_staff/` + this.state.delete_medical_staffID, type: "DELETE"
     });
   }
 
@@ -378,19 +377,23 @@ class App extends Component {
     const data = await $.get(
       `${config.apiPath}/api/medical_staff/` + selectedStaffID
     );
-    this.setState({
-      address: data.Address,
-      birthdate: data.Birthdate,
-      email: data.Email,
-      firstName: data.First_name,
-      lastName: data.Last_name,
-      homeTel: data.Home_tel,
-      medicalType: data.Medical_type,
-      mobileTel: data.Mobile_tel,
-      salary: data.Salary,
-      sex: data.Sex,
-      staffID: data.Staff_ID
-    });
+    try {
+      this.setState({
+        address: data.Address,
+        birthdate: data.Birthdate,
+        email: data.Email,
+        firstName: data.First_name,
+        lastName: data.Last_name,
+        homeTel: data.Home_tel,
+        medicalType: data.Medical_type,
+        mobileTel: data.Mobile_tel,
+        salary: data.Salary,
+        sex: data.Sex,
+        staffID: data.Staff_ID
+      });
+    } catch (error) {
+
+    }
   }
 
   async getLocationbyDeptName(Dept_Name){
@@ -476,7 +479,7 @@ class App extends Component {
         </BoxPanel>
         <Panel>
           <h2>What do you want to know?</h2>
-          <div class="input1">
+          {/* <div class="input1">
             selectedStaffID : &nbsp;
             <Selector
               value={this.state.selectedStaffID}
@@ -484,7 +487,15 @@ class App extends Component {
             >
               {this.XinputList()}
             </Selector>
-          </div>
+          </div> */}
+          <label>
+            selectedStaffID :
+                <input
+              type="text"
+              value={this.state.selectedStaffID}
+              onChange={this.handleChange('selectedStaffID')}
+            />
+          </label>
           <Button
             onClick={() => this.getMedicalStaffbyID(this.state.selectedStaffID)}
           >
@@ -549,7 +560,7 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_lastName}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_lastName')}
                 />
               </label>
             </div>
@@ -560,7 +571,7 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_email}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_email')}
                 />
               </label>
             </div>
@@ -571,7 +582,18 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_birthDate}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_birthDate')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Address:
+                <input
+                  type="text"
+                  value={this.state.post_medical_address}
+                  onChange={this.handleChange('post_medical_address')}
                 />
               </label>
             </div>
@@ -582,7 +604,7 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_medicalType}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_medicalType')}
                 />
               </label>
             </div>
@@ -593,7 +615,7 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_homeTel}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_homeTel')}
                 />
               </label>
             </div>
@@ -604,7 +626,7 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_mobileTel}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_mobileTel')}
                 />
               </label>
             </div>
@@ -615,7 +637,7 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.post_medical_sex}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_sex')}
                 />
               </label>
             </div>
@@ -626,7 +648,7 @@ class App extends Component {
                 <input
                   type="number"
                   value={this.state.post_medical_salary}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange('post_medical_salary')}
                 />
               </label>
             </div>
@@ -648,8 +670,8 @@ class App extends Component {
                 Staff_ID:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_staffID}
+                  onChange={this.handleChange('patch_medical_staffID')}
                 />
               </label>
             </div>
@@ -659,8 +681,8 @@ class App extends Component {
                 First_name:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_firstName}
+                  onChange={this.handleChange('patch_medical_firstName')}
                 />
               </label>
             </div>
@@ -670,8 +692,8 @@ class App extends Component {
                 Last_name:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_lastName}
+                  onChange={this.handleChange('patch_medical_lastName')}
                 />
               </label>
             </div>
@@ -681,8 +703,8 @@ class App extends Component {
                 Email:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_email}
+                  onChange={this.handleChange('patch_medical_email')}
                 />
               </label>
             </div>
@@ -692,8 +714,19 @@ class App extends Component {
                 Birthdate:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_birthDate}
+                  onChange={this.handleChange('patch_medical_birthDate')}
+                />
+              </label>
+            </div>
+            <br />
+            <div>
+              <label>
+                Address:
+                <input
+                  type="text"
+                  value={this.state.patch_medical_address}
+                  onChange={this.handleChange('patch_medical_address')}
                 />
               </label>
             </div>
@@ -703,8 +736,8 @@ class App extends Component {
                 Medical_type:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_medicalType}
+                  onChange={this.handleChange('patch_medical_medicalType')}
                 />
               </label>
             </div>
@@ -714,8 +747,8 @@ class App extends Component {
                 Home_tel:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_homeTel}
+                  onChange={this.handleChange('patch_medical_homeTel')}
                 />
               </label>
             </div>
@@ -725,8 +758,8 @@ class App extends Component {
                 Mobile_tel:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_mobileTel}
+                  onChange={this.handleChange('patch_medical_mobileTel')}
                 />
               </label>
             </div>
@@ -736,8 +769,8 @@ class App extends Component {
                 Sex:
                 <input
                   type="text"
-                  value={this.state.value}
-                  onChange={this.handleChange}
+                  value={this.state.patch_medical_sex}
+                  onChange={this.handleChange('patch_medical_sex')}
                 />
               </label>
             </div>
@@ -746,9 +779,9 @@ class App extends Component {
               <label>
                 Salary:
                 <input
-                  type="text"
-                  value={this.state.post_medical_salary}
-                  onChange={this.handleChange}
+                  type="number"
+                  value={this.state.patch_medical_salary}
+                  onChange={this.handleChange('patch_medical_salary')}
                 />
               </label>
             </div>
@@ -765,13 +798,23 @@ class App extends Component {
         <Panel5>
           <h1> Show Medical Staff Data that you Deleted</h1>
           <div>
-            <input
-              type="submit"
-              value="Submit"
-              onClick={() => this.deleteMedicalStaff(this.state.value)}
-            />
-          </div>
-          <div>
+            <div>
+              <label>
+                Staff_ID:
+                <input
+                  type="text"
+                  value={this.state.delete_medical_staffID}
+                  onChange={this.handleChange('delete_medical_staffID')}
+                />
+              </label>
+              <input
+                type="submit"
+                value="Submit"
+                onClick={() => this.deleteMedicalStaff(this.state.value)}
+              />
+            </div>
+            {/* <div> */}
+            <br />
             <div>{"Show " + "Address: " + this.state.address}</div>
             <br />
             <div>{"Show " + "Birthdate: " + this.state.birthdate}</div>
@@ -792,7 +835,7 @@ class App extends Component {
             <br />
             <div>{"Show " + "Sex:  " + this.state.sex}</div>
             <br />
-            <div>{"Show " + "Staff_ID:  " + this.state.staffID}</div>
+            {/* </div> */}
           </div>
         </Panel5>
         <Panel_Dept>
