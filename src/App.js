@@ -32,7 +32,7 @@ const Image2 = styled.img`
 `;
 
 const Header = styled.div`
-  margin-top: 40px;
+  margin-top: 60px;
   margin-bottom: 10px;
   font-size: 56px;
   grid-column: 1 / span2;
@@ -692,7 +692,7 @@ class App extends Component {
       <Container>
         {/* <Image2 src="http://static.siuk-thailand.com/assets/images/thelogoforcms.jpg" align="middle" /> */}
 
-        <Header id="home">Hospital Management System</Header>
+        <Header id="home MedicalStaff department patient appointment treatment">Hospital Management System</Header>
         <NavBar>
           <ul>
             <li><a href="#home" className={this.state.isActive == 0 ? 'active' : ''} onClick={() => { this.setState({ isActive: 0 }) }}>Home</a></li>
@@ -704,7 +704,7 @@ class App extends Component {
           </ul>
         </NavBar>
         {this.state.isActive == 1 &&
-          <Panel id="MedicalStaff">
+          <Panel>
             <h2>What do you want to know?</h2>
             {/* <div class="input1">
             selectedStaffID : &nbsp;
@@ -1057,7 +1057,7 @@ class App extends Component {
           </Panel5>
         }
         {this.state.isActive == 2 &&
-          <Panel_Dept id="department">
+          <Panel_Dept>
             <div>
               < h2>Department Session</h2>
               <Panel_Dept1>
@@ -1104,7 +1104,7 @@ class App extends Component {
           </Panel_Dept>
         }
         {this.state.isActive == 3 &&
-          <Panel_Patient1 id="patient">
+          <Panel_Patient1>
             <div class="input1">
               Please key patient ID : &nbsp;
               <label>
@@ -1262,7 +1262,7 @@ class App extends Component {
           </Panel_Patient2>
         }
         {this.state.isActive == 4 &&
-          <Panel_Appoint1 id="appointment">
+          <Panel_Appoint1>
             <h1> Show Appointment</h1>
             <div>
               <div>
@@ -1442,7 +1442,7 @@ class App extends Component {
           </Panel_Appoint4>
         }
         {this.state.isActive == 5 &&
-          <Panel_Appoint5 id="treatment">
+          <Panel_Appoint5>
             <h1> Show Treatment</h1>
             <div>
               <div>
