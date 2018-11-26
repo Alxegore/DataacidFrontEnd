@@ -41,13 +41,10 @@ const Header = styled.div`
   font-family: Impact, Charcoal, sans-serif;
 `;
 
-const BoxPanel = styled.div`
+const NavBar = styled.div`
   grid-column: 1 / span 2;
   grid-row: 2;
-  background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 450px;
-  padding: 15px;
   img {
     display: inline-block;
     margin: 10px;
@@ -212,7 +209,7 @@ const Panel_Dept2 = styled.div`
 const Panel_Patient1 = styled.div`
   grid-column: 1 ;
   grid-row: 7;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 550px;
   padding: 15px;
@@ -228,7 +225,7 @@ const Panel_Patient1 = styled.div`
 const Panel_Patient2 = styled.div`
   grid-column: 2 ;
   grid-row: 7;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 550px;
   padding: 15px;
@@ -245,7 +242,7 @@ const Panel_Patient2 = styled.div`
 const Panel_Appoint1 = styled.div`
   grid-column: 1;
   grid-row: 8;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 350px;
   padding: 15px;
@@ -261,7 +258,7 @@ const Panel_Appoint1 = styled.div`
 const Panel_Appoint2 = styled.div`
   grid-column: 2;
   grid-row: 8;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 350px;
   padding: 15px;
@@ -277,7 +274,7 @@ const Panel_Appoint2 = styled.div`
 const Panel_Appoint3 = styled.div`
   grid-column: 1;
   grid-row: 9;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
   padding: 15px;
@@ -293,7 +290,7 @@ const Panel_Appoint3 = styled.div`
 const Panel_Appoint4 = styled.div`
   grid-column: 2;
   grid-row: 9;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
   padding: 15px;
@@ -309,7 +306,7 @@ const Panel_Appoint4 = styled.div`
 const Panel_Appoint5 = styled.div`
   grid-column: 1;
   grid-row: 10;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
   padding: 15px;
@@ -325,7 +322,7 @@ const Panel_Appoint5 = styled.div`
 const Panel_Appoint6 = styled.div`
   grid-column: 2;
   grid-row: 10;
-  background: rgba(238, 223, 204, 1);
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
   padding: 15px;
@@ -418,6 +415,8 @@ class App extends Component {
       post_appointment_date: "",
       post_appointment_doctorID: "",
       post_appointment_patientID: "",
+
+      isActive: 0
     };
     this.handleSelectedStaffID = this.handleSelectedStaffID.bind(this);
 
@@ -606,16 +605,25 @@ class App extends Component {
     return returnVal;
   }
 
+
+
   render() {
     console.log(this.state);
     return (
       <Container>
         {/* <Image2 src="http://static.siuk-thailand.com/assets/images/thelogoforcms.jpg" align="middle" /> */}
-        <Header>Hospital Management System</Header>
-        <BoxPanel>
-          <h1> *Interesting Data is Coming to Town* </h1>
-        </BoxPanel>
-        <Panel>
+        <Header id="home">Hospital Management System</Header>
+        <NavBar>
+          <ul>
+            <li><a href="#home" className={this.state.isActive==0 ? 'active': ''} onClick={()=>{this.setState({isActive : 0})}}>Home</a></li>
+            <li><a href="#MedicalStaff" className={this.state.isActive==1 ? 'active': ''} onClick={()=>{this.setState({isActive : 1})}}>MedicalStaff</a></li>
+            <li><a href="#department" className={this.state.isActive==2 ? 'active': ''} onClick={()=>{this.setState({isActive : 2})}}>Department</a></li>
+            <li><a href="#patient" className={this.state.isActive==3 ? 'active': ''} onClick={()=>{this.setState({isActive : 3})}}>Patient</a></li>
+            <li><a href="#appointment" className={this.state.isActive==4 ? 'active': ''} onClick={()=>{this.setState({isActive : 4})}}>Appointment</a></li>
+            <li><a href="#treatment" className={this.state.isActive==5 ? 'active': ''} onClick={()=>{this.setState({isActive : 5})}}>Treatment</a></li>
+          </ul>
+        </NavBar>
+        <Panel id="MedicalStaff">
           <h2>What do you want to know?</h2>
           {/* <div class="input1">
             selectedStaffID : &nbsp;
@@ -979,7 +987,7 @@ class App extends Component {
             {/* </div> */}
           </div>
         </Panel5>
-        <Panel_Dept>
+        <Panel_Dept id="department">
           <div>
             < h2>Department Session</h2>
             <Panel_Dept1>
@@ -1024,7 +1032,7 @@ class App extends Component {
             </Panel_Dept2>
           </div>
         </Panel_Dept>
-        <Panel_Patient1>
+        <Panel_Patient1 id="patient">
           <div class="input1">
             Please key patient ID : &nbsp;
               <label>
@@ -1178,7 +1186,7 @@ class App extends Component {
             </div>
           </form>
         </Panel_Patient2>
-        <Panel_Appoint1>
+        <Panel_Appoint1 id="appointment">
           <h1> Show Appointment</h1>
           <div>
             <div>
@@ -1350,7 +1358,7 @@ class App extends Component {
             </div>
           </div>
         </Panel_Appoint4>
-        <Panel_Appoint5>
+        <Panel_Appoint5 id="treatment">
           <h1> Show Treatment</h1>
           <div>
             <div>
