@@ -410,11 +410,30 @@ class App extends Component {
       get_appointment_doctorEmail: "",
       get_appointment_doctorFirstName: "",
       get_appointment_doctorLastName: "",
-      get_appointment_doctorSex: "",
+      get_appointment_appointID: "",
 
       post_appointment_date: "",
       post_appointment_doctorID: "",
       post_appointment_patientID: "",
+
+      patch_appointment_appointID: "",
+      patch_appointment_date: "",
+      patch_appointment_doctorID: "",
+      patch_appointment_patientID: "",
+
+      delete_appointment_patientID: "",
+      delete_appointment_appointmentID: "",
+
+      get_treatment_patientID: "",
+      get_treatment_queue: "",
+      get_treatment_doctorID: "",
+      get_treatment_cost: "",
+      get_treatment_symptom: "",
+
+      post_prescribe_patientID: "",
+      post_prescribe_doctorID: "",
+      post_prescribe_medicineID: "",
+      post_prescribe_quantity: 0,
 
       isActive: 0
     };
@@ -468,9 +487,25 @@ class App extends Component {
       }
     });
   }
+
+  async updateAppointment() {
+    await $.ajax({
+      url: `${config.apiPath}/api/appoint/` + this.state.patch_appointment_appointID, type: "PATCH", data: {
+        doctor_id: this.state.patch_appointment_doctorID,
+        patient_id: this.state.patch_appointment_patientID,
+        appoint_date: new Date("05 October 2011 14:48 UTC").toISOString()
+      }
+    });
+  }
   async deleteMedicalStaff(value2) {
     await $.ajax({
       url: `${config.apiPath}/api/medical_staff/` + this.state.delete_medical_staffID, type: "DELETE"
+    });
+  }
+
+  async deleteAppointment() {
+    await $.ajax({
+      url: `${config.apiPath}/api/appoint/` + this.state.delete_appointment_appointmentID, type: "DELETE"
     });
   }
 
@@ -518,7 +553,7 @@ class App extends Component {
         get_appointment_doctorEmail: data[i].Doctor_email,
         get_appointment_doctorFirstName: data[i].Doctor_first_name,
         get_appointment_doctorLastName: data[i].Doctor_last_name,
-        get_appointment_doctorSex: data[i].Doctor_sex,
+        get_appointment_appointID: data[i].Appoint_ID,
       });
     } catch (error) {
 
@@ -596,6 +631,33 @@ class App extends Component {
     });
   }
 
+  async getTreatmentbyID(selectedID, i) {
+    // var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
+    const data = await $.get(
+      `${config.apiPath}/api/treatment`, { patient_id: this.state.get_treatment_patientID }
+    );
+    console.log(data)
+    try {
+      i = parseInt(i) - 1
+      this.setState({
+        get_treatment_doctorID: data[i].doctor_id,
+        get_treatment_cost: data[i].cost,
+        get_treatment_symptom: data[i].symptom,
+      });
+    } catch (error) {
+
+    }
+  }
+
+  async postPrescribe(value2) {
+    const res = await $.post(`${config.apiPath}/api/medicine/perscribe`, {
+      doctor_id: this.state.post_prescribe_doctorID,
+      patient_id: this.state.post_prescribe_patientID,
+      medicine_id: this.state.post_prescribe_medicineID,
+      quantity: this.state.post_prescribe_quantity,
+    });
+  }
+
   XinputList() {
     var returnVal = [];
     var gList = ["1", "2", "3", "4", "5", "6", "7"];
@@ -615,12 +677,12 @@ class App extends Component {
         <Header id="home">Hospital Management System</Header>
         <NavBar>
           <ul>
-            <li><a href="#home" className={this.state.isActive==0 ? 'active': ''} onClick={()=>{this.setState({isActive : 0})}}>Home</a></li>
-            <li><a href="#MedicalStaff" className={this.state.isActive==1 ? 'active': ''} onClick={()=>{this.setState({isActive : 1})}}>MedicalStaff</a></li>
-            <li><a href="#department" className={this.state.isActive==2 ? 'active': ''} onClick={()=>{this.setState({isActive : 2})}}>Department</a></li>
-            <li><a href="#patient" className={this.state.isActive==3 ? 'active': ''} onClick={()=>{this.setState({isActive : 3})}}>Patient</a></li>
-            <li><a href="#appointment" className={this.state.isActive==4 ? 'active': ''} onClick={()=>{this.setState({isActive : 4})}}>Appointment</a></li>
-            <li><a href="#treatment" className={this.state.isActive==5 ? 'active': ''} onClick={()=>{this.setState({isActive : 5})}}>Treatment</a></li>
+            <li><a href="#home" className={this.state.isActive == 0 ? 'active' : ''} onClick={() => { this.setState({ isActive: 0 }) }}>Home</a></li>
+            <li><a href="#MedicalStaff" className={this.state.isActive == 1 ? 'active' : ''} onClick={() => { this.setState({ isActive: 1 }) }}>MedicalStaff</a></li>
+            <li><a href="#department" className={this.state.isActive == 2 ? 'active' : ''} onClick={() => { this.setState({ isActive: 2 }) }}>Department</a></li>
+            <li><a href="#patient" className={this.state.isActive == 3 ? 'active' : ''} onClick={() => { this.setState({ isActive: 3 }) }}>Patient</a></li>
+            <li><a href="#appointment" className={this.state.isActive == 4 ? 'active' : ''} onClick={() => { this.setState({ isActive: 4 }) }}>Appointment</a></li>
+            <li><a href="#treatment" className={this.state.isActive == 5 ? 'active' : ''} onClick={() => { this.setState({ isActive: 5 }) }}>Treatment</a></li>
           </ul>
         </NavBar>
         <Panel id="MedicalStaff">
@@ -1224,7 +1286,7 @@ class App extends Component {
             <br />
             <div>{"Show " + "Doctor Last_name: " + this.state.get_appointment_doctorLastName}</div>
             <br />
-            <div>{"Show " + "Doctor Sex:  " + this.state.get_appointment_doctorSex}</div>
+            <div>{"Show " + "Appoint ID:  " + this.state.get_appointment_appointID}</div>
             <br />
             {/* </div> */}
           </div>
@@ -1282,8 +1344,8 @@ class App extends Component {
                 Appoint ID:
                 <input
                   type="text"
-                  value={this.state.post_appointment_patientID}
-                  onChange={this.handleChange('post_appointment_patientID')}
+                  value={this.state.patch_appointment_appointID}
+                  onChange={this.handleChange('patch_appointment_appointID')}
                 />
               </label>
             </div>
@@ -1293,8 +1355,8 @@ class App extends Component {
                 Patient ID:
                 <input
                   type="text"
-                  value={this.state.post_appointment_patientID}
-                  onChange={this.handleChange('post_appointment_patientID')}
+                  value={this.state.patch_appointment_patientID}
+                  onChange={this.handleChange('patch_appointment_patientID')}
                 />
               </label>
             </div>
@@ -1304,8 +1366,8 @@ class App extends Component {
                 Doctor ID:
                 <input
                   type="text"
-                  value={this.state.post_appointment_doctorID}
-                  onChange={this.handleChange('post_appointment_doctorID')}
+                  value={this.state.patch_appointment_doctorID}
+                  onChange={this.handleChange('patch_appointment_doctorID')}
                 />
               </label>
             </div>
@@ -1314,9 +1376,9 @@ class App extends Component {
               <label>
                 Date And Time:
                 <input
-                  type="number"
-                  value={this.state.post_appointment_date}
-                  onChange={this.handleChange('post_appointment_date')}
+                  type="text"
+                  value={this.state.patch_appointment_date}
+                  onChange={this.handleChange('patch_appointment_date')}
                 />
               </label>
             </div>
@@ -1325,7 +1387,7 @@ class App extends Component {
               <input
                 type="submit"
                 value="Submit"
-                onClick={() => this.postAppointment(this.state.value)}
+                onClick={() => this.updateAppointment()}
               />
             </div>
           </form>
@@ -1338,22 +1400,22 @@ class App extends Component {
                 Patient_ID:
                 <input
                   type="text"
-                  value={this.state.selectedPatientIDAppointment}
-                  onChange={this.handleChange('selectedPatientIDAppointment')}
+                  value={this.state.delete_appointment_patientID}
+                  onChange={this.handleChange('delete_appointment_patientID')}
                 />
               </label>
               <label>
-                Queue:
+                Appoint_ID:
                 <input
                   type="text"
-                  value={this.state.selectedAppointmentQueue}
-                  onChange={this.handleChange('selectedAppointmentQueue')}
+                  value={this.state.delete_appointment_appointmentID}
+                  onChange={this.handleChange('delete_appointment_appointmentID')}
                 />
               </label>
               <input
                 type="submit"
                 value="Submit"
-                onClick={() => this.getAppointmentbyID(this.state.selectedPatientIDAppointment, this.state.selectedAppointmentQueue)}
+                onClick={() => this.deleteAppointment()}
               />
             </div>
           </div>
@@ -1366,31 +1428,31 @@ class App extends Component {
                 Patient_ID:
                 <input
                   type="text"
-                  value={this.state.selectedPatientIDAppointment}
-                  onChange={this.handleChange('selectedPatientIDAppointment')}
+                  value={this.state.get_treatment_patientID}
+                  onChange={this.handleChange('get_treatment_patientID')}
                 />
               </label>
               <label>
                 Queue:
                 <input
                   type="text"
-                  value={this.state.selectedAppointmentQueue}
-                  onChange={this.handleChange('selectedAppointmentQueue')}
+                  value={this.state.get_treatment_queue}
+                  onChange={this.handleChange('get_treatment_queue')}
                 />
               </label>
               <input
                 type="submit"
                 value="Submit"
-                onClick={() => this.getAppointmentbyID(this.state.selectedPatientIDAppointment, this.state.selectedAppointmentQueue)}
+                onClick={() => this.getTreatmentbyID(this.state.get_treatment_patientID, this.state.get_treatment_queue)}
               />
             </div>
             {/* <div> */}
             <br />
-            <div>{"Show " + "Doctor ID: " + this.state.get_appointment_doctorID}</div>
+            <div>{"Show " + "Doctor ID: " + this.state.get_treatment_doctorID}</div>
             <br />
-            <div>{"Show " + "Cost: " + this.state.get_appointment_doctorEmail}</div>
+            <div>{"Show " + "Cost: " + this.state.get_treatment_cost}</div>
             <br />
-            <div>{"Show " + "Symptom: " + this.state.get_appointment_doctorFirstName}</div>
+            <div>{"Show " + "Symptom: " + this.state.get_treatment_symptom}</div>
             {/* </div> */}
           </div>
         </Panel_Appoint5>
@@ -1402,8 +1464,8 @@ class App extends Component {
                 Patient ID:
                 <input
                   type="text"
-                  value={this.state.post_appointment_patientID}
-                  onChange={this.handleChange('post_appointment_patientID')}
+                  value={this.state.post_prescribe_patientID}
+                  onChange={this.handleChange('post_prescribe_patientID')}
                 />
               </label>
             </div>
@@ -1413,8 +1475,8 @@ class App extends Component {
                 Doctor ID:
                 <input
                   type="text"
-                  value={this.state.post_appointment_doctorID}
-                  onChange={this.handleChange('post_appointment_doctorID')}
+                  value={this.state.post_prescribe_doctorID}
+                  onChange={this.handleChange('post_prescribe_doctorID')}
                 />
               </label>
             </div>
@@ -1423,9 +1485,9 @@ class App extends Component {
               <label>
                 Medicine ID:
                 <input
-                  type="number"
-                  value={this.state.post_appointment_date}
-                  onChange={this.handleChange('post_appointment_date')}
+                  type="text"
+                  value={this.state.post_prescribe_medicineID}
+                  onChange={this.handleChange('post_prescribe_medicineID')}
                 />
               </label>
             </div>
@@ -1435,8 +1497,8 @@ class App extends Component {
                 Quantity:
                 <input
                   type="number"
-                  value={this.state.post_appointment_date}
-                  onChange={this.handleChange('post_appointment_date')}
+                  value={this.state.post_prescribe_quantity}
+                  onChange={this.handleChange('post_prescribe_quantity')}
                 />
               </label>
             </div>
@@ -1445,7 +1507,7 @@ class App extends Component {
               <input
                 type="submit"
                 value="Submit"
-                onClick={() => this.postAppointment(this.state.value)}
+                onClick={() => this.postPrescribe(this.state.value)}
               />
             </div>
           </form>
