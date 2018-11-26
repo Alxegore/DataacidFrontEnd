@@ -52,6 +52,7 @@ const NavBar = styled.div`
 `;
 
 const Panel = styled.div`
+border-radius: 20px;
   grid-column: 1 / span 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
@@ -68,6 +69,7 @@ const Panel = styled.div`
   }
 `;
 const Panel2 = styled.div`
+border-radius: 20px;
   grid-column: 1;
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
@@ -84,6 +86,7 @@ const Panel2 = styled.div`
   }
 `;
 const Panel3 = styled.div`
+border-radius: 20px;
   grid-column: 2;
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
@@ -101,6 +104,7 @@ const Panel3 = styled.div`
 `;
 
 const Panel4 = styled.div`
+border-radius: 20px;
   grid-column: 1;
   grid-row: 5;
   background: rgba(205, 192, 176, 1);
@@ -117,6 +121,7 @@ const Panel4 = styled.div`
   }
 `;
 const Panel5 = styled.div`
+border-radius: 20px;
   grid-column: 2;
   grid-row: 5;
   background: rgba(205, 192, 176, 1);
@@ -158,6 +163,7 @@ const Button = styled.button`
   }
 `;
 const Panel_Dept = styled.div`
+border-radius: 20px;
   grid-column: 1 / span 2;
   grid-row: 6 ;
   background: rgba(238, 223, 204, 1);
@@ -174,6 +180,7 @@ const Panel_Dept = styled.div`
   }
 `;
 const Panel_Dept1 = styled.div`
+border-radius: 20px;
   grid-column: 1 ;
   grid-row: 6;
   background: rgba(	205, 183, 158, 1);
@@ -190,6 +197,7 @@ const Panel_Dept1 = styled.div`
   }
 `;
 const Panel_Dept2 = styled.div`
+border-radius: 20px;
   grid-column: 2 ;
   grid-row: 6;
   background: rgba(205, 183, 158, 1);
@@ -207,6 +215,7 @@ const Panel_Dept2 = styled.div`
 `;
 
 const Panel_Patient1 = styled.div`
+border-radius: 20px;
   grid-column: 1 ;
   grid-row: 7;
   background: rgba(205, 192, 176, 1);
@@ -223,6 +232,7 @@ const Panel_Patient1 = styled.div`
   }
 `;
 const Panel_Patient2 = styled.div`
+border-radius: 20px;
   grid-column: 2 ;
   grid-row: 7;
   background: rgba(205, 192, 176, 1);
@@ -240,6 +250,7 @@ const Panel_Patient2 = styled.div`
 `;
 
 const Panel_Appoint1 = styled.div`
+border-radius: 20px;
   grid-column: 1;
   grid-row: 8;
   background: rgba(205, 192, 176, 1);
@@ -256,6 +267,7 @@ const Panel_Appoint1 = styled.div`
   }
 `;
 const Panel_Appoint2 = styled.div`
+border-radius: 20px;
   grid-column: 2;
   grid-row: 8;
   background: rgba(205, 192, 176, 1);
@@ -272,6 +284,7 @@ const Panel_Appoint2 = styled.div`
   }
 `;
 const Panel_Appoint3 = styled.div`
+border-radius: 20px;
   grid-column: 1;
   grid-row: 9;
   background: rgba(205, 192, 176, 1);
@@ -288,6 +301,7 @@ const Panel_Appoint3 = styled.div`
   }
 `;
 const Panel_Appoint4 = styled.div`
+border-radius: 20px;
   grid-column: 2;
   grid-row: 9;
   background: rgba(205, 192, 176, 1);
@@ -304,6 +318,7 @@ const Panel_Appoint4 = styled.div`
   }
 `;
 const Panel_Appoint5 = styled.div`
+border-radius: 20px;
   grid-column: 1;
   grid-row: 10;
   background: rgba(205, 192, 176, 1);
@@ -320,6 +335,7 @@ const Panel_Appoint5 = styled.div`
   }
 `;
 const Panel_Appoint6 = styled.div`
+border-radius: 20px;
   grid-column: 2;
   grid-row: 10;
   background: rgba(205, 192, 176, 1);
