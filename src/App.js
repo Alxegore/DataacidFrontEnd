@@ -32,18 +32,18 @@ const Image2 = styled.img`
 `;
 
 const Header = styled.div`
-  margin-top: 60px;
+  margin-top: 30px;
   margin-bottom: 10px;
   font-size: 56px;
   grid-column: 1 / span2;
-  grid-row: 1;
+  grid-row: 2;
   text-align: center;
   font-family: Impact, Charcoal, sans-serif;
 `;
 
 const NavBar = styled.div`
   grid-column: 1 / span 2;
-  grid-row: 2;
+  grid-row: 1;
   overflow: hidden;
   img {
     display: inline-block;
