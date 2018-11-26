@@ -33,7 +33,7 @@ const Image2 = styled.img`
 
 const Header = styled.div`
   margin-top: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-size: 56px;
   grid-column: 1 / span2;
   grid-row: 1;
@@ -691,6 +691,7 @@ class App extends Component {
     return (
       <Container>
         {/* <Image2 src="http://static.siuk-thailand.com/assets/images/thelogoforcms.jpg" align="middle" /> */}
+
         <Header id="home">Hospital Management System</Header>
         <NavBar>
           <ul>
@@ -702,9 +703,10 @@ class App extends Component {
             <li><a href="#treatment" className={this.state.isActive == 5 ? 'active' : ''} onClick={() => { this.setState({ isActive: 5 }) }}>Treatment</a></li>
           </ul>
         </NavBar>
-        <Panel id="MedicalStaff">
-          <h2>What do you want to know?</h2>
-          {/* <div class="input1">
+        {this.state.isActive == 1 &&
+          <Panel id="MedicalStaff">
+            <h2>What do you want to know?</h2>
+            {/* <div class="input1">
             selectedStaffID : &nbsp;
             <Selector
               value={this.state.selectedStaffID}
@@ -713,54 +715,58 @@ class App extends Component {
               {this.XinputList()}
             </Selector>
           </div> */}
-          <label>
-            selectedStaffID :
+            <label>
+              selectedStaffID :
                 <input
-              type="text"
-              value={this.state.selectedStaffID}
-              onChange={this.handleChange('selectedStaffID')}
-            />
-          </label>
-          <Button
-            onClick={() => this.getMedicalStaffbyID(this.state.selectedStaffID)}
-          >
-            {/* <Button
+                type="text"
+                value={this.state.selectedStaffID}
+                onChange={this.handleChange('selectedStaffID')}
+              />
+            </label>
+            <Button
+              onClick={() => this.getMedicalStaffbyID(this.state.selectedStaffID)}
+            >
+              {/* <Button
             onClick={() => this.getAppointmentbyID(this.state.selectedStaffID)}
           > */}
-            {" "}
-            Show Pls
+              {" "}
+              Show Pls
           </Button>
-        </Panel>
-        <Panel2>
-          <h1> Show Medical Staff Data as you requested</h1>
-          <div>
-            <div>{"Show " + "Address: " + this.state.address}</div>
-            <br />
-            <div>{"Show " + "Birthdate: " + this.state.birthdate}</div>
-            <br />
-            <div>{"Show " + "Email: " + this.state.email}</div>
-            <br />
-            <div>{"Show " + "First_name: " + this.state.firstName}</div>
-            <br />
-            <div>{"Show " + "Home_tel: " + this.state.homeTel}</div>
-            <br />
-            <div>{"Show " + "Last_name: " + this.state.lastName}</div>
-            <br />
-            <div>{"Show " + "Medical_type:  " + this.state.medicalType}</div>
-            <br />
-            <div>{"Show " + "Mobile_tel:  " + this.state.mobileTel}</div>
-            <br />
-            <div>{"Show " + "Salary:  " + this.state.salary}</div>
-            <br />
-            <div>{"Show " + "Sex:  " + this.state.sex}</div>
-            <br />
-            <div>{"Show " + "Staff_ID:  " + this.state.staffID}</div>
-          </div>
-        </Panel2>
-        <Panel3>
-          <h1>Submit Medical Staff Data to Server</h1>
-          <form onSubmit={this.handleSubmit}>
-            {/* <div>
+          </Panel>
+        }
+        {this.state.isActive == 1 &&
+          <Panel2>
+            <h1> Show Medical Staff Data as you requested</h1>
+            <div>
+              <div>{"Show " + "Address: " + this.state.address}</div>
+              <br />
+              <div>{"Show " + "Birthdate: " + this.state.birthdate}</div>
+              <br />
+              <div>{"Show " + "Email: " + this.state.email}</div>
+              <br />
+              <div>{"Show " + "First_name: " + this.state.firstName}</div>
+              <br />
+              <div>{"Show " + "Home_tel: " + this.state.homeTel}</div>
+              <br />
+              <div>{"Show " + "Last_name: " + this.state.lastName}</div>
+              <br />
+              <div>{"Show " + "Medical_type:  " + this.state.medicalType}</div>
+              <br />
+              <div>{"Show " + "Mobile_tel:  " + this.state.mobileTel}</div>
+              <br />
+              <div>{"Show " + "Salary:  " + this.state.salary}</div>
+              <br />
+              <div>{"Show " + "Sex:  " + this.state.sex}</div>
+              <br />
+              <div>{"Show " + "Staff_ID:  " + this.state.staffID}</div>
+            </div>
+          </Panel2>
+        }
+        {this.state.isActive == 1 &&
+          <Panel3>
+            <h1>Submit Medical Staff Data to Server</h1>
+            <form onSubmit={this.handleSubmit}>
+              {/* <div>
               <label>
                 Staff_ID:
                 <input
@@ -771,764 +777,766 @@ class App extends Component {
               </label>
             </div>
             <br /> */}
-            <div>
-              <label>
-                First_name:
+              <div>
+                <label>
+                  First_name:
                 <input
-                  type="text"
-                  value={this.state.post_medical_firstName}
-                  onChange={this.handleChange('post_medical_firstName')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Last_name:
-                <input
-                  type="text"
-                  value={this.state.post_medical_lastName}
-                  onChange={this.handleChange('post_medical_lastName')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Email:
-                <input
-                  type="text"
-                  value={this.state.post_medical_email}
-                  onChange={this.handleChange('post_medical_email')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Birthdate:
-                <input
-                  type="text"
-                  value={this.state.post_medical_birthDate}
-                  onChange={this.handleChange('post_medical_birthDate')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Address:
-                <input
-                  type="text"
-                  value={this.state.post_medical_address}
-                  onChange={this.handleChange('post_medical_address')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Medical_type:
-                <input
-                  type="text"
-                  value={this.state.post_medical_medicalType}
-                  onChange={this.handleChange('post_medical_medicalType')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Home_tel:
-                <input
-                  type="text"
-                  value={this.state.post_medical_homeTel}
-                  onChange={this.handleChange('post_medical_homeTel')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Mobile_tel:
-                <input
-                  type="text"
-                  value={this.state.post_medical_mobileTel}
-                  onChange={this.handleChange('post_medical_mobileTel')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Sex:
-                <input
-                  type="text"
-                  value={this.state.post_medical_sex}
-                  onChange={this.handleChange('post_medical_sex')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Salary:
-                <input
-                  type="number"
-                  value={this.state.post_medical_salary}
-                  onChange={this.handleChange('post_medical_salary')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.postDoctor(this.state.value)}
-              />
-            </div>
-          </form>
-        </Panel3>
-        <Panel4>
-          <h1>Edit Medical Staff Data as you want</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <label>
-                Staff_ID:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_staffID}
-                  onChange={this.handleChange('patch_medical_staffID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                First_name:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_firstName}
-                  onChange={this.handleChange('patch_medical_firstName')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Last_name:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_lastName}
-                  onChange={this.handleChange('patch_medical_lastName')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Email:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_email}
-                  onChange={this.handleChange('patch_medical_email')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Birthdate:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_birthDate}
-                  onChange={this.handleChange('patch_medical_birthDate')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Address:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_address}
-                  onChange={this.handleChange('patch_medical_address')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Medical_type:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_medicalType}
-                  onChange={this.handleChange('patch_medical_medicalType')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Home_tel:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_homeTel}
-                  onChange={this.handleChange('patch_medical_homeTel')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Mobile_tel:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_mobileTel}
-                  onChange={this.handleChange('patch_medical_mobileTel')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Sex:
-                <input
-                  type="text"
-                  value={this.state.patch_medical_sex}
-                  onChange={this.handleChange('patch_medical_sex')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Salary:
-                <input
-                  type="number"
-                  value={this.state.patch_medical_salary}
-                  onChange={this.handleChange('patch_medical_salary')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.patchMedicalStaff(this.state.value)}
-              />
-            </div>
-          </form>
-        </Panel4>
-        <Panel5>
-          <h1> Show Medical Staff Data that you Deleted</h1>
-          <div>
-            <div>
-              <label>
-                Staff_ID:
-                <input
-                  type="text"
-                  value={this.state.delete_medical_staffID}
-                  onChange={this.handleChange('delete_medical_staffID')}
-                />
-              </label>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.deleteMedicalStaff(this.state.value)}
-              />
-            </div>
-            {/* <div> */}
-            <br />
-            <div>{"Show " + "Address: " + this.state.address}</div>
-            <br />
-            <div>{"Show " + "Birthdate: " + this.state.birthdate}</div>
-            <br />
-            <div>{"Show " + "Email: " + this.state.email}</div>
-            <br />
-            <div>{"Show " + "First_name: " + this.state.firstName}</div>
-            <br />
-            <div>{"Show " + "Home_tel: " + this.state.homeTel}</div>
-            <br />
-            <div>{"Show " + "Last_name: " + this.state.lastName}</div>
-            <br />
-            <div>{"Show " + "Medical_type:  " + this.state.medicalType}</div>
-            <br />
-            <div>{"Show " + "Mobile_tel:  " + this.state.mobileTel}</div>
-            <br />
-            <div>{"Show " + "Salary:  " + this.state.salary}</div>
-            <br />
-            <div>{"Show " + "Sex:  " + this.state.sex}</div>
-            <br />
-            {/* </div> */}
-          </div>
-        </Panel5>
-        <Panel_Dept id="department">
-          <div>
-            < h2>Department Session</h2>
-            <Panel_Dept1>
-              <div class="input1">
-                Put the depratment's name : &nbsp;
-              <label>
-                  <input
                     type="text"
-                    value={this.state.selectedDeptName}
-                    onChange={this.handleChange('selectedDeptName')}
+                    value={this.state.post_medical_firstName}
+                    onChange={this.handleChange('post_medical_firstName')}
                   />
                 </label>
               </div>
-              <Button
-                onClick={() => this.getLocationbyDeptName(this.state.selectedDeptName)}
-              >
-                {" "}
-                Search
-            </Button>
               <br />
-              <div>{"Location: " + this.state.showDLocation}</div>
-            </Panel_Dept1>
-            <Panel_Dept2>
-              <div class="input1">
-                Put the maneger's ID : &nbsp;
-              <label>
-                  <input
+              <div>
+                <label>
+                  Last_name:
+                <input
                     type="text"
-                    value={this.state.selectedManagerID}
-                    onChange={this.handleChange('selectedManagerID')}
+                    value={this.state.post_medical_lastName}
+                    onChange={this.handleChange('post_medical_lastName')}
                   />
                 </label>
               </div>
-              <Button
-                onClick={() => this.getDeptNamebyMID(this.state.selectedManagerID)}
-              >
-                {" "}
-                Search
-            </Button>
               <br />
-              <div>{"Department: " + this.state.showDeptName}</div>
-            </Panel_Dept2>
-          </div>
-        </Panel_Dept>
-        <Panel_Patient1 id="patient">
-          <div class="input1">
-            Please key patient ID : &nbsp;
+              <div>
+                <label>
+                  Email:
+                <input
+                    type="text"
+                    value={this.state.post_medical_email}
+                    onChange={this.handleChange('post_medical_email')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Birthdate:
+                <input
+                    type="text"
+                    value={this.state.post_medical_birthDate}
+                    onChange={this.handleChange('post_medical_birthDate')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Address:
+                <input
+                    type="text"
+                    value={this.state.post_medical_address}
+                    onChange={this.handleChange('post_medical_address')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Medical_type:
+                <input
+                    type="text"
+                    value={this.state.post_medical_medicalType}
+                    onChange={this.handleChange('post_medical_medicalType')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Home_tel:
+                <input
+                    type="text"
+                    value={this.state.post_medical_homeTel}
+                    onChange={this.handleChange('post_medical_homeTel')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Mobile_tel:
+                <input
+                    type="text"
+                    value={this.state.post_medical_mobileTel}
+                    onChange={this.handleChange('post_medical_mobileTel')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Sex:
+                <input
+                    type="text"
+                    value={this.state.post_medical_sex}
+                    onChange={this.handleChange('post_medical_sex')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Salary:
+                <input
+                    type="number"
+                    value={this.state.post_medical_salary}
+                    onChange={this.handleChange('post_medical_salary')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.postDoctor(this.state.value)}
+                />
+              </div>
+            </form>
+          </Panel3>
+        }
+        {this.state.isActive == 1 &&
+          <Panel4>
+            <h1>Edit Medical Staff Data as you want</h1>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <label>
+                  Staff_ID:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_staffID}
+                    onChange={this.handleChange('patch_medical_staffID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  First_name:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_firstName}
+                    onChange={this.handleChange('patch_medical_firstName')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Last_name:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_lastName}
+                    onChange={this.handleChange('patch_medical_lastName')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Email:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_email}
+                    onChange={this.handleChange('patch_medical_email')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Birthdate:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_birthDate}
+                    onChange={this.handleChange('patch_medical_birthDate')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Address:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_address}
+                    onChange={this.handleChange('patch_medical_address')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Medical_type:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_medicalType}
+                    onChange={this.handleChange('patch_medical_medicalType')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Home_tel:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_homeTel}
+                    onChange={this.handleChange('patch_medical_homeTel')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Mobile_tel:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_mobileTel}
+                    onChange={this.handleChange('patch_medical_mobileTel')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Sex:
+                <input
+                    type="text"
+                    value={this.state.patch_medical_sex}
+                    onChange={this.handleChange('patch_medical_sex')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Salary:
+                <input
+                    type="number"
+                    value={this.state.patch_medical_salary}
+                    onChange={this.handleChange('patch_medical_salary')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.patchMedicalStaff(this.state.value)}
+                />
+              </div>
+            </form>
+          </Panel4>
+        }
+        {this.state.isActive == 1 &&
+          <Panel5>
+            <h1> Show Medical Staff Data that you Deleted</h1>
+            <div>
+              <div>
+                <label>
+                  Staff_ID:
+                <input
+                    type="text"
+                    value={this.state.delete_medical_staffID}
+                    onChange={this.handleChange('delete_medical_staffID')}
+                  />
+                </label>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.deleteMedicalStaff(this.state.value)}
+                />
+              </div>
+              {/* <div> */}
+              {/* </div> */}
+            </div>
+          </Panel5>
+        }
+        {this.state.isActive == 2 &&
+          <Panel_Dept id="department">
+            <div>
+              < h2>Department Session</h2>
+              <Panel_Dept1>
+                <div class="input1">
+                  Put the depratment's name : &nbsp;
               <label>
-              <input
-                type="text"
-                value={this.state.selectedPatientID}
-                onChange={this.handleChange('selectedPatientID')}
-              />
-            </label>
-          </div>
-          <Button
-            onClick={() => this.getInformbyPatientID(this.state.selectedPatientID)}
-          >
-            {" "}
-            Search
+                    <input
+                      type="text"
+                      value={this.state.selectedDeptName}
+                      onChange={this.handleChange('selectedDeptName')}
+                    />
+                  </label>
+                </div>
+                <Button
+                  onClick={() => this.getLocationbyDeptName(this.state.selectedDeptName)}
+                >
+                  {" "}
+                  Search
             </Button>
-          <br />
-          <h3>Information</h3>
-          <div>
-            <div>{"First Name: " + this.state.patient_first_name}</div>
-            <br />
-            <div>{"Last Name: " + this.state.patient_last_name}</div>
-            <br />
-            <div>{"Sex:  " + this.state.patient_sex}</div>
-            <br />
-            <div>{"Address: " + this.state.patient_Address}</div>
-            <br />
-            <div>{"Birth Date: " + this.state.patient_Birthdate}</div>
-            <br />
-            <div>{"Phone Number: " + this.state.patient_phone_number}</div>
-            <br />
-            <div>{"Parent Name: " + this.state.parent_first_name + " " + this.state.parent_last_name}</div>
-            <br />
-            <div>{"Parent Phone Number:  " + this.state.parent_phone_number}</div>
-            <br />
-            <div>{"Allergy Name:  " + this.state.allergy_name}</div>
-          </div>
-        </Panel_Patient1>
-        <Panel_Patient2>
-          <h2>Add New Patient</h2>
-          <form onSubmit={this.handleSubmit}>
-            <div>
+                <br />
+                <div>{"Location: " + this.state.showDLocation}</div>
+              </Panel_Dept1>
+              <Panel_Dept2>
+                <div class="input1">
+                  Put the maneger's ID : &nbsp;
               <label>
-                First_name:
+                    <input
+                      type="text"
+                      value={this.state.selectedManagerID}
+                      onChange={this.handleChange('selectedManagerID')}
+                    />
+                  </label>
+                </div>
+                <Button
+                  onClick={() => this.getDeptNamebyMID(this.state.selectedManagerID)}
+                >
+                  {" "}
+                  Search
+            </Button>
+                <br />
+                <div>{"Department: " + this.state.showDeptName}</div>
+              </Panel_Dept2>
+            </div>
+          </Panel_Dept>
+        }
+        {this.state.isActive == 3 &&
+          <Panel_Patient1 id="patient">
+            <div class="input1">
+              Please key patient ID : &nbsp;
+              <label>
                 <input
                   type="text"
-                  value={this.state.post_Patient_first_name}
-                  onChange={this.handleChange('post_Patient_first_name')}
+                  value={this.state.selectedPatientID}
+                  onChange={this.handleChange('selectedPatientID')}
                 />
               </label>
             </div>
+            <Button
+              onClick={() => this.getInformbyPatientID(this.state.selectedPatientID)}
+            >
+              {" "}
+              Search
+            </Button>
             <br />
+            <h3>Information</h3>
             <div>
-              <label>
-                Last_name:
+              <div>{"First Name: " + this.state.patient_first_name}</div>
+              <br />
+              <div>{"Last Name: " + this.state.patient_last_name}</div>
+              <br />
+              <div>{"Sex:  " + this.state.patient_sex}</div>
+              <br />
+              <div>{"Address: " + this.state.patient_Address}</div>
+              <br />
+              <div>{"Birth Date: " + this.state.patient_Birthdate}</div>
+              <br />
+              <div>{"Phone Number: " + this.state.patient_phone_number}</div>
+              <br />
+              <div>{"Parent Name: " + this.state.parent_first_name + " " + this.state.parent_last_name}</div>
+              <br />
+              <div>{"Parent Phone Number:  " + this.state.parent_phone_number}</div>
+              <br />
+              <div>{"Allergy Name:  " + this.state.allergy_name}</div>
+            </div>
+          </Panel_Patient1>
+        }
+        {this.state.isActive == 3 &&
+          <Panel_Patient2>
+            <h2>Add New Patient</h2>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <label>
+                  First_name:
                 <input
-                  type="text"
-                  value={this.state.post_Patient_last_name}
-                  onChange={this.handleChange('post_Patient_last_name')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Sex:
+                    type="text"
+                    value={this.state.post_Patient_first_name}
+                    onChange={this.handleChange('post_Patient_first_name')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Last_name:
                 <input
-                  type="text"
-                  value={this.state.post_Patient_sex}
-                  onChange={this.handleChange('post_Patient_sex')}
-                />
-                <div>(eg. Male,Female )</div>
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Birthdate:
+                    type="text"
+                    value={this.state.post_Patient_last_name}
+                    onChange={this.handleChange('post_Patient_last_name')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Sex:
                 <input
-                  type="text"
-                  value={this.state.post_Patient_Birthdate}
-                  onChange={this.handleChange('post_Patient_Birthdate')}
-                />
-                <div>(eg. yyyy-mm-dd)</div>
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Phone Number:
+                    type="text"
+                    value={this.state.post_Patient_sex}
+                    onChange={this.handleChange('post_Patient_sex')}
+                  />
+                  <div>(eg. Male,Female )</div>
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Birthdate:
                 <input
-                  type="text"
-                  value={this.state.post_Patient_phone_number}
-                  onChange={this.handleChange('post_Patient_phone_number')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Parent First Name:
+                    type="text"
+                    value={this.state.post_Patient_Birthdate}
+                    onChange={this.handleChange('post_Patient_Birthdate')}
+                  />
+                  <div>(eg. yyyy-mm-dd)</div>
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Phone Number:
                 <input
-                  type="text"
-                  value={this.state.post_Parent_first_name}
-                  onChange={this.handleChange('post_Parent_first_name')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Parent Last Name:
+                    type="text"
+                    value={this.state.post_Patient_phone_number}
+                    onChange={this.handleChange('post_Patient_phone_number')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Parent First Name:
                 <input
-                  type="text"
-                  value={this.state.post_Parent_last_name}
-                  onChange={this.handleChange('post_Parent_last_name')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Parent Phone Number:
+                    type="text"
+                    value={this.state.post_Parent_first_name}
+                    onChange={this.handleChange('post_Parent_first_name')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Parent Last Name:
                 <input
-                  type="text"
-                  value={this.state.post_Parent_phone_number}
-                  onChange={this.handleChange('post_Parent_phone_number')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Allergy Name:
+                    type="text"
+                    value={this.state.post_Parent_last_name}
+                    onChange={this.handleChange('post_Parent_last_name')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Parent Phone Number:
                 <input
-                  type="text"
-                  value={this.state.post_Allergy_name}
-                  onChange={this.handleChange('post_Allergy_name')}
-                />
-              </label>
-            </div>
-            <be />
-            <div> (eg. 'Peanut allergy,Shrimp') </div>
-            <br />
-            <div>
-              <input
-                type="submit"
-                value="Add"
-                onClick={() => this.postPatient(this.state.value)}
-              />
-            </div>
-          </form>
-        </Panel_Patient2>
-        <Panel_Appoint1 id="appointment">
-          <h1> Show Appointment</h1>
-          <div>
-            <div>
-              <label>
-                Patient_ID:
+                    type="text"
+                    value={this.state.post_Parent_phone_number}
+                    onChange={this.handleChange('post_Parent_phone_number')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Allergy Name:
                 <input
-                  type="text"
-                  value={this.state.selectedPatientIDAppointment}
-                  onChange={this.handleChange('selectedPatientIDAppointment')}
-                />
-              </label>
-              <label>
-                Queue:
+                    type="text"
+                    value={this.state.post_Allergy_name}
+                    onChange={this.handleChange('post_Allergy_name')}
+                  />
+                </label>
+              </div>
+              <be />
+              <div> (eg. 'Peanut allergy,Shrimp') </div>
+              <br />
+              <div>
                 <input
-                  type="text"
-                  value={this.state.selectedAppointmentQueue}
-                  onChange={this.handleChange('selectedAppointmentQueue')}
+                  type="submit"
+                  value="Add"
+                  onClick={() => this.postPatient(this.state.value)}
                 />
-              </label>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.getAppointmentbyID(this.state.selectedPatientIDAppointment, this.state.selectedAppointmentQueue)}
-              />
-            </div>
-            {/* <div> */}
-            <br />
-            <div>{"Show " + "Date: " + this.state.get_appointment_date}</div>
-            <br />
-            <div>{"Show " + "Doctor ID: " + this.state.get_appointment_doctorID}</div>
-            <br />
-            <div>{"Show " + "Doctor Email: " + this.state.get_appointment_doctorEmail}</div>
-            <br />
-            <div>{"Show " + "Doctor First_name: " + this.state.get_appointment_doctorFirstName}</div>
-            <br />
-            <div>{"Show " + "Doctor Last_name: " + this.state.get_appointment_doctorLastName}</div>
-            <br />
-            <div>{"Show " + "Appoint ID:  " + this.state.get_appointment_appointID}</div>
-            <br />
-            {/* </div> */}
-          </div>
-        </Panel_Appoint1>
-        <Panel_Appoint2>
-          <h1> Add Appointment for that Patient</h1>
-          <form onSubmit={this.handleSubmit}>
+              </div>
+            </form>
+          </Panel_Patient2>
+        }
+        {this.state.isActive == 4 &&
+          <Panel_Appoint1 id="appointment">
+            <h1> Show Appointment</h1>
             <div>
-              <label>
-                Patient ID:
+              <div>
+                <label>
+                  Patient_ID:
                 <input
-                  type="text"
-                  value={this.state.post_appointment_patientID}
-                  onChange={this.handleChange('post_appointment_patientID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Doctor ID:
+                    type="text"
+                    value={this.state.selectedPatientIDAppointment}
+                    onChange={this.handleChange('selectedPatientIDAppointment')}
+                  />
+                </label>
+                <label>
+                  Queue:
                 <input
-                  type="text"
-                  value={this.state.post_appointment_doctorID}
-                  onChange={this.handleChange('post_appointment_doctorID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Date And Time:
+                    type="text"
+                    value={this.state.selectedAppointmentQueue}
+                    onChange={this.handleChange('selectedAppointmentQueue')}
+                  />
+                </label>
                 <input
-                  type="number"
-                  value={this.state.post_appointment_date}
-                  onChange={this.handleChange('post_appointment_date')}
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.getAppointmentbyID(this.state.selectedPatientIDAppointment, this.state.selectedAppointmentQueue)}
                 />
-              </label>
+              </div>
+              {/* <div> */}
+              <br />
+              <div>{"Show " + "Date: " + this.state.get_appointment_date}</div>
+              <br />
+              <div>{"Show " + "Doctor ID: " + this.state.get_appointment_doctorID}</div>
+              <br />
+              <div>{"Show " + "Doctor Email: " + this.state.get_appointment_doctorEmail}</div>
+              <br />
+              <div>{"Show " + "Doctor First_name: " + this.state.get_appointment_doctorFirstName}</div>
+              <br />
+              <div>{"Show " + "Doctor Last_name: " + this.state.get_appointment_doctorLastName}</div>
+              <br />
+              <div>{"Show " + "Appoint ID:  " + this.state.get_appointment_appointID}</div>
+              <br />
+              {/* </div> */}
             </div>
-            <br />
-            <div>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.postAppointment(this.state.value)}
-              />
-            </div>
-          </form>
-        </Panel_Appoint2>
-        <Panel_Appoint3>
-          <h1> Update Appointment for that Patient</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <label>
-                Appoint ID:
+          </Panel_Appoint1>
+        }
+        {this.state.isActive == 4 &&
+          <Panel_Appoint2>
+            <h1> Add Appointment for that Patient</h1>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <label>
+                  Patient ID:
                 <input
-                  type="text"
-                  value={this.state.patch_appointment_appointID}
-                  onChange={this.handleChange('patch_appointment_appointID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Patient ID:
+                    type="text"
+                    value={this.state.post_appointment_patientID}
+                    onChange={this.handleChange('post_appointment_patientID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Doctor ID:
                 <input
-                  type="text"
-                  value={this.state.patch_appointment_patientID}
-                  onChange={this.handleChange('patch_appointment_patientID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Doctor ID:
+                    type="text"
+                    value={this.state.post_appointment_doctorID}
+                    onChange={this.handleChange('post_appointment_doctorID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Date And Time:
                 <input
-                  type="text"
-                  value={this.state.patch_appointment_doctorID}
-                  onChange={this.handleChange('patch_appointment_doctorID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Date And Time:
+                    type="number"
+                    value={this.state.post_appointment_date}
+                    onChange={this.handleChange('post_appointment_date')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
                 <input
-                  type="text"
-                  value={this.state.patch_appointment_date}
-                  onChange={this.handleChange('patch_appointment_date')}
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.postAppointment(this.state.value)}
                 />
-              </label>
-            </div>
-            <br />
-            <div>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.updateAppointment()}
-              />
-            </div>
-          </form>
-        </Panel_Appoint3>
-        <Panel_Appoint4>
-          <h1> Delete Appointment</h1>
-          <div>
-            <div>
-              <label>
-                Patient_ID:
+              </div>
+            </form>
+          </Panel_Appoint2>
+        }
+        {this.state.isActive == 4 &&
+          <Panel_Appoint3>
+            <h1> Update Appointment for that Patient</h1>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <label>
+                  Appoint ID:
                 <input
-                  type="text"
-                  value={this.state.delete_appointment_patientID}
-                  onChange={this.handleChange('delete_appointment_patientID')}
-                />
-              </label>
-              <label>
-                Appoint_ID:
+                    type="text"
+                    value={this.state.patch_appointment_appointID}
+                    onChange={this.handleChange('patch_appointment_appointID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Patient ID:
                 <input
-                  type="text"
-                  value={this.state.delete_appointment_appointmentID}
-                  onChange={this.handleChange('delete_appointment_appointmentID')}
+                    type="text"
+                    value={this.state.patch_appointment_patientID}
+                    onChange={this.handleChange('patch_appointment_patientID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Doctor ID:
+                <input
+                    type="text"
+                    value={this.state.patch_appointment_doctorID}
+                    onChange={this.handleChange('patch_appointment_doctorID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Date And Time:
+                <input
+                    type="text"
+                    value={this.state.patch_appointment_date}
+                    onChange={this.handleChange('patch_appointment_date')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.updateAppointment()}
                 />
-              </label>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.deleteAppointment()}
-              />
-            </div>
-          </div>
-        </Panel_Appoint4>
-        <Panel_Appoint5 id="treatment">
-          <h1> Show Treatment</h1>
-          <div>
+              </div>
+            </form>
+          </Panel_Appoint3>
+        }
+        {this.state.isActive == 4 &&
+          <Panel_Appoint4>
+            <h1> Delete Appointment</h1>
             <div>
-              <label>
-                Patient_ID:
+              <div>
+                <label>
+                  Patient_ID:
                 <input
-                  type="text"
-                  value={this.state.get_treatment_patientID}
-                  onChange={this.handleChange('get_treatment_patientID')}
-                />
-              </label>
-              <label>
-                Queue:
+                    type="text"
+                    value={this.state.delete_appointment_patientID}
+                    onChange={this.handleChange('delete_appointment_patientID')}
+                  />
+                </label>
+                <label>
+                  Appoint_ID:
                 <input
-                  type="text"
-                  value={this.state.get_treatment_queue}
-                  onChange={this.handleChange('get_treatment_queue')}
+                    type="text"
+                    value={this.state.delete_appointment_appointmentID}
+                    onChange={this.handleChange('delete_appointment_appointmentID')}
+                  />
+                </label>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.deleteAppointment()}
                 />
-              </label>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.getTreatmentbyID(this.state.get_treatment_patientID, this.state.get_treatment_queue)}
-              />
+              </div>
             </div>
-            {/* <div> */}
-            <br />
-            <div>{"Show " + "Doctor ID: " + this.state.get_treatment_doctorID}</div>
-            <br />
-            <div>{"Show " + "Cost: " + this.state.get_treatment_cost}</div>
-            <br />
-            <div>{"Show " + "Symptom: " + this.state.get_treatment_symptom}</div>
-            {/* </div> */}
-          </div>
-        </Panel_Appoint5>
-        <Panel_Appoint6>
-          <h1> Prescribe Medicine</h1>
-          <form onSubmit={this.handleSubmit}>
+          </Panel_Appoint4>
+        }
+        {this.state.isActive == 5 &&
+          <Panel_Appoint5 id="treatment">
+            <h1> Show Treatment</h1>
             <div>
-              <label>
-                Patient ID:
+              <div>
+                <label>
+                  Patient_ID:
                 <input
-                  type="text"
-                  value={this.state.post_prescribe_patientID}
-                  onChange={this.handleChange('post_prescribe_patientID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Doctor ID:
+                    type="text"
+                    value={this.state.get_treatment_patientID}
+                    onChange={this.handleChange('get_treatment_patientID')}
+                  />
+                </label>
+                <label>
+                  Queue:
                 <input
-                  type="text"
-                  value={this.state.post_prescribe_doctorID}
-                  onChange={this.handleChange('post_prescribe_doctorID')}
-                />
-              </label>
-            </div>
-            <br />
-            <div>
-              <label>
-                Medicine ID:
+                    type="text"
+                    value={this.state.get_treatment_queue}
+                    onChange={this.handleChange('get_treatment_queue')}
+                  />
+                </label>
                 <input
-                  type="text"
-                  value={this.state.post_prescribe_medicineID}
-                  onChange={this.handleChange('post_prescribe_medicineID')}
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.getTreatmentbyID(this.state.get_treatment_patientID, this.state.get_treatment_queue)}
                 />
-              </label>
+              </div>
+              {/* <div> */}
+              <br />
+              <div>{"Show " + "Doctor ID: " + this.state.get_treatment_doctorID}</div>
+              <br />
+              <div>{"Show " + "Cost: " + this.state.get_treatment_cost}</div>
+              <br />
+              <div>{"Show " + "Symptom: " + this.state.get_treatment_symptom}</div>
+              {/* </div> */}
             </div>
-            <br />
-            <div>
-              <label>
-                Quantity:
+          </Panel_Appoint5>
+        }
+        {this.state.isActive == 5 &&
+          <Panel_Appoint6>
+            <h1> Prescribe Medicine</h1>
+            <form onSubmit={this.handleSubmit}>
+              <div>
+                <label>
+                  Patient ID:
                 <input
-                  type="number"
-                  value={this.state.post_prescribe_quantity}
-                  onChange={this.handleChange('post_prescribe_quantity')}
+                    type="text"
+                    value={this.state.post_prescribe_patientID}
+                    onChange={this.handleChange('post_prescribe_patientID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Doctor ID:
+                <input
+                    type="text"
+                    value={this.state.post_prescribe_doctorID}
+                    onChange={this.handleChange('post_prescribe_doctorID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Medicine ID:
+                <input
+                    type="text"
+                    value={this.state.post_prescribe_medicineID}
+                    onChange={this.handleChange('post_prescribe_medicineID')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <label>
+                  Quantity:
+                <input
+                    type="number"
+                    value={this.state.post_prescribe_quantity}
+                    onChange={this.handleChange('post_prescribe_quantity')}
+                  />
+                </label>
+              </div>
+              <br />
+              <div>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={() => this.postPrescribe(this.state.value)}
                 />
-              </label>
-            </div>
-            <br />
-            <div>
-              <input
-                type="submit"
-                value="Submit"
-                onClick={() => this.postPrescribe(this.state.value)}
-              />
-            </div>
-          </form>
-        </Panel_Appoint6>
+              </div>
+            </form>
+          </Panel_Appoint6>
+        }
       </Container>
     );
   }
