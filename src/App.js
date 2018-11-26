@@ -468,7 +468,7 @@ class App extends Component {
       address: this.state.post_medical_address,
       email: this.state.post_medical_email,
       doctor_type: "Doctor",
-      birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
+      birthdate: new Date(this.state.post_medical_birthDate + " UTC").toISOString()
     });
   }
   async patchMedicalStaff(value2) {
@@ -483,7 +483,7 @@ class App extends Component {
         address: this.state.patch_medical_address,
         email: this.state.patch_medical_email,
         doctor_type: "Doctor",
-        birthdate: new Date("05 October 2011 14:48 UTC").toISOString()
+        birthdate: new Date(this.state.patch_medical_birthDate + " UTC").toISOString()
       }
     });
   }
@@ -493,7 +493,7 @@ class App extends Component {
       url: `${config.apiPath}/api/appoint/` + this.state.patch_appointment_appointID, type: "PATCH", data: {
         doctor_id: this.state.patch_appointment_doctorID,
         patient_id: this.state.patch_appointment_patientID,
-        appoint_date: new Date("05 October 2011 14:48 UTC").toISOString()
+        appoint_date: new Date(this.state.patch_appointment_date + " UTC").toISOString()
       }
     });
   }
@@ -564,7 +564,8 @@ class App extends Component {
     const res = await $.post(`${config.apiPath}/api/appoint`, {
       doctor_id: this.state.post_appointment_doctorID,
       patient_id: this.state.post_appointment_patientID,
-      appoint_date: new Date("05 October 2011 14:48 UTC").toISOString(),
+      // appoint_date: new Date("05 October 2011 14:48 UTC").toISOString(),
+      appoint_date: new Date(this.state.post_appointment_date + " UTC").toISOString(),
     });
   }
 
@@ -601,7 +602,7 @@ class App extends Component {
     const data = await $.get(
       `${config.apiPath}/api/patient/` + selectedPatientID
     );
-    console.log("55555");
+    // console.log("55555");
     this.setState({
       patient_Address: data.Address,
       patient_Birthdate: data.Birthdate,
@@ -640,9 +641,9 @@ class App extends Component {
     try {
       i = parseInt(i) - 1
       this.setState({
-        get_treatment_doctorID: data[i].doctor_id,
-        get_treatment_cost: data[i].cost,
-        get_treatment_symptom: data[i].symptom,
+        get_treatment_doctorID: data[i].Doctor_ID,
+        get_treatment_cost: data[i].Treatment_cost,
+        get_treatment_symptom: data[i].Symptom,
       });
     } catch (error) {
 
