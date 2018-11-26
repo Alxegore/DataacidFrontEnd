@@ -14,21 +14,25 @@ const Container = styled.div`
   color: rgb(105,105,105);
 `;
 
-const Image = styled.img`
-  width: 500px;
-  min-width: 0;
-  min-height: 0;
-`;
-
 const Image2 = styled.img`
-  width: 300px;
-  margin-left: 450px;
-  margin-top: 50px;
+  width: 1600px;
   grid-column: 1;
-  grid-row: 1;
+  grid-row: 2;
   text-align: center;
   min-width: 0;
   min-height: 0;
+  z-index: -1; position:relative;
+`;
+
+const Header2 = styled.div`
+  margin-top: 45px;
+  margin-left: 100px;
+  font-size: 70px;
+  font-color: rgb(0, 0, 128);
+  grid-column: 1 / span2;
+  grid-row: 2;
+  text-align: left;
+  font-family: Impact, Charcoal, sans-serif;
 `;
 
 const Header = styled.div`
@@ -165,8 +169,8 @@ const Button = styled.button`
 const Panel_Dept = styled.div`
 border-radius: 20px;
   grid-column: 1 / span 2;
-  grid-row: 6 ;
-  background: rgba(238, 223, 204, 1);
+  grid-row: 3 ;
+  background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
   padding: 15px;
@@ -182,8 +186,8 @@ border-radius: 20px;
 const Panel_Dept1 = styled.div`
 border-radius: 20px;
   grid-column: 1 ;
-  grid-row: 6;
-  background: rgba(	205, 183, 158, 1);
+  grid-row: 4;
+  background: rgba(238, 223, 204, 1);
   overflow: hidden;
   height: 100px;
   padding: 15px;
@@ -199,8 +203,8 @@ border-radius: 20px;
 const Panel_Dept2 = styled.div`
 border-radius: 20px;
   grid-column: 2 ;
-  grid-row: 6;
-  background: rgba(205, 183, 158, 1);
+  grid-row: 4;
+  background: rgba(238, 223, 204, 1);
   overflow: hidden;
   height: 100px;
   padding: 15px;
@@ -217,7 +221,7 @@ border-radius: 20px;
 const Panel_Patient1 = styled.div`
 border-radius: 20px;
   grid-column: 1 ;
-  grid-row: 7;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 550px;
@@ -234,7 +238,7 @@ border-radius: 20px;
 const Panel_Patient2 = styled.div`
 border-radius: 20px;
   grid-column: 2 ;
-  grid-row: 7;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 550px;
@@ -252,7 +256,7 @@ border-radius: 20px;
 const Panel_Appoint1 = styled.div`
 border-radius: 20px;
   grid-column: 1;
-  grid-row: 8;
+  grid-row: 4;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 350px;
@@ -269,7 +273,7 @@ border-radius: 20px;
 const Panel_Appoint2 = styled.div`
 border-radius: 20px;
   grid-column: 2;
-  grid-row: 8;
+  grid-row: 4;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 350px;
@@ -286,7 +290,7 @@ border-radius: 20px;
 const Panel_Appoint3 = styled.div`
 border-radius: 20px;
   grid-column: 1;
-  grid-row: 9;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
@@ -303,7 +307,7 @@ border-radius: 20px;
 const Panel_Appoint4 = styled.div`
 border-radius: 20px;
   grid-column: 2;
-  grid-row: 9;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
@@ -320,7 +324,7 @@ border-radius: 20px;
 const Panel_Appoint5 = styled.div`
 border-radius: 20px;
   grid-column: 1;
-  grid-row: 10;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
@@ -337,7 +341,7 @@ border-radius: 20px;
 const Panel_Appoint6 = styled.div`
 border-radius: 20px;
   grid-column: 2;
-  grid-row: 10;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
@@ -690,9 +694,13 @@ class App extends Component {
     console.log(this.state);
     return (
       <Container>
-        {/* <Image2 src="http://static.siuk-thailand.com/assets/images/thelogoforcms.jpg" align="middle" /> */}
-
-        <Header id="home MedicalStaff department patient appointment treatment">Hospital Management System</Header>
+        {this.state.isActive != 0 && <Header>Hospital Management System</Header>}
+        {this.state.isActive == 0 && 
+        <Header2>
+          <div>Hospital</div>
+          <div>Management</div>
+          <div>System</div><br />
+        </Header2>}
         <NavBar>
           <ul>
             <li><a href="#home" className={this.state.isActive == 0 ? 'active' : ''} onClick={() => { this.setState({ isActive: 0 }) }}>Home</a></li>
@@ -703,6 +711,9 @@ class App extends Component {
             <li><a href="#treatment" className={this.state.isActive == 5 ? 'active' : ''} onClick={() => { this.setState({ isActive: 5 }) }}>Treatment</a></li>
           </ul>
         </NavBar>
+        {this.state.isActive == 0 &&
+          <Image2 src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg" class="center" />
+        }
         {this.state.isActive == 1 &&
           <Panel>
             <h2>What do you want to know?</h2>
