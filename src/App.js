@@ -11,7 +11,7 @@ const Container = styled.div`
   min-width: 0;
   min-height: 0;
   font-family: "Roboto", sans-serif;
-  color: rgb(105,105,105);
+  color: rgb(105, 105, 105);
 `;
 
 const Image2 = styled.img`
@@ -21,7 +21,8 @@ const Image2 = styled.img`
   text-align: center;
   min-width: 0;
   min-height: 0;
-  z-index: -1; position:relative;
+  z-index: -1;
+  position: relative;
 `;
 
 const Header2 = styled.div`
@@ -56,7 +57,7 @@ const NavBar = styled.div`
 `;
 
 const Panel = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1 / span 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
@@ -73,7 +74,7 @@ border-radius: 20px;
   }
 `;
 const Panel2 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1;
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
@@ -90,7 +91,7 @@ border-radius: 20px;
   }
 `;
 const Panel3 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 2;
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
@@ -108,7 +109,7 @@ border-radius: 20px;
 `;
 
 const Panel4 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1;
   grid-row: 5;
   background: rgba(205, 192, 176, 1);
@@ -125,7 +126,7 @@ border-radius: 20px;
   }
 `;
 const Panel5 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 2;
   grid-row: 5;
   background: rgba(205, 192, 176, 1);
@@ -141,8 +142,22 @@ border-radius: 20px;
     margin-left: 20px;
   }
 `;
-
-
+const PanelTable = styled.div`
+  border-radius: 20px;
+  grid-column: 1 /span 2;
+  grid-row: 6;
+  background: rgba(205, 192, 176, 1);
+  height: 550px;
+  padding: 15px;
+  div {
+    display: inline-block;
+    margin: 10px;
+  }
+  button {
+    display: inline-block;
+    margin-left: 20px;
+  }
+`;
 const Selector = styled.select`
   -webkit-appearance: none;
   -webkit-border-radius: 0px;
@@ -167,9 +182,9 @@ const Button = styled.button`
   }
 `;
 const Panel_Dept = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1 / span 2;
-  grid-row: 3 ;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 250px;
@@ -184,8 +199,8 @@ border-radius: 20px;
   }
 `;
 const Panel_Dept1 = styled.div`
-border-radius: 20px;
-  grid-column: 1 ;
+  border-radius: 20px;
+  grid-column: 1;
   grid-row: 4;
   background: rgba(238, 223, 204, 1);
   overflow: hidden;
@@ -201,8 +216,8 @@ border-radius: 20px;
   }
 `;
 const Panel_Dept2 = styled.div`
-border-radius: 20px;
-  grid-column: 2 ;
+  border-radius: 20px;
+  grid-column: 2;
   grid-row: 4;
   background: rgba(238, 223, 204, 1);
   overflow: hidden;
@@ -219,8 +234,8 @@ border-radius: 20px;
 `;
 
 const Panel_Patient1 = styled.div`
-border-radius: 20px;
-  grid-column: 1 ;
+  border-radius: 20px;
+  grid-column: 1;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
@@ -236,8 +251,8 @@ border-radius: 20px;
   }
 `;
 const Panel_Patient2 = styled.div`
-border-radius: 20px;
-  grid-column: 2 ;
+  border-radius: 20px;
+  grid-column: 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
@@ -254,7 +269,7 @@ border-radius: 20px;
 `;
 
 const Panel_Appoint1 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1;
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
@@ -271,7 +286,7 @@ border-radius: 20px;
   }
 `;
 const Panel_Appoint2 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 2;
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
@@ -288,7 +303,7 @@ border-radius: 20px;
   }
 `;
 const Panel_Appoint3 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
@@ -305,7 +320,7 @@ border-radius: 20px;
   }
 `;
 const Panel_Appoint4 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
@@ -322,7 +337,7 @@ border-radius: 20px;
   }
 `;
 const Panel_Appoint5 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 1;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
@@ -339,7 +354,7 @@ border-radius: 20px;
   }
 `;
 const Panel_Appoint6 = styled.div`
-border-radius: 20px;
+  border-radius: 20px;
   grid-column: 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
@@ -356,11 +371,11 @@ border-radius: 20px;
   }
 `;
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      staff: [],
       selectedStaffID: "1",
       address: "",
       email: "",
@@ -462,12 +477,14 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  handleChange = field => event => {
-    const value = {}
-    value[field] = event.target.value
-    this.setState(value);
+  componentDidMount() {
+    this.getMedicalStaff();
   }
+  handleChange = field => event => {
+    const value = {};
+    value[field] = event.target.value;
+    this.setState(value);
+  };
 
   handleSubmit(e) {
     // alert("Submit");
@@ -488,12 +505,18 @@ class App extends Component {
       address: this.state.post_medical_address,
       email: this.state.post_medical_email,
       doctor_type: "Doctor",
-      birthdate: new Date(this.state.post_medical_birthDate + " UTC").toISOString()
+      birthdate: new Date(
+        this.state.post_medical_birthDate + " UTC"
+      ).toISOString()
     });
   }
   async patchMedicalStaff(value2) {
     await $.ajax({
-      url: `${config.apiPath}/api/medical_staff/` + this.state.patch_medical_staffID, type: "PATCH", data: {
+      url:
+        `${config.apiPath}/api/medical_staff/` +
+        this.state.patch_medical_staffID,
+      type: "PATCH",
+      data: {
         firstname: this.state.patch_medical_firstName,
         lastname: this.state.patch_medical_lastName,
         sex: this.state.patch_medical_sex,
@@ -503,29 +526,43 @@ class App extends Component {
         address: this.state.patch_medical_address,
         email: this.state.patch_medical_email,
         doctor_type: "Doctor",
-        birthdate: new Date(this.state.patch_medical_birthDate + " UTC").toISOString()
+        birthdate: new Date(
+          this.state.patch_medical_birthDate + " UTC"
+        ).toISOString()
       }
     });
   }
 
   async updateAppointment() {
     await $.ajax({
-      url: `${config.apiPath}/api/appoint/` + this.state.patch_appointment_appointID, type: "PATCH", data: {
+      url:
+        `${config.apiPath}/api/appoint/` +
+        this.state.patch_appointment_appointID,
+      type: "PATCH",
+      data: {
         doctor_id: this.state.patch_appointment_doctorID,
         patient_id: this.state.patch_appointment_patientID,
-        appoint_date: new Date(this.state.patch_appointment_date + " UTC").toISOString()
+        appoint_date: new Date(
+          this.state.patch_appointment_date + " UTC"
+        ).toISOString()
       }
     });
   }
   async deleteMedicalStaff(value2) {
     await $.ajax({
-      url: `${config.apiPath}/api/medical_staff/` + this.state.delete_medical_staffID, type: "DELETE"
+      url:
+        `${config.apiPath}/api/medical_staff/` +
+        this.state.delete_medical_staffID,
+      type: "DELETE"
     });
   }
 
   async deleteAppointment() {
     await $.ajax({
-      url: `${config.apiPath}/api/appoint/` + this.state.delete_appointment_appointmentID, type: "DELETE"
+      url:
+        `${config.apiPath}/api/appoint/` +
+        this.state.delete_appointment_appointmentID,
+      type: "DELETE"
     });
   }
 
@@ -534,7 +571,11 @@ class App extends Component {
       selectedStaffID: e.target.value
     });
   }
-
+  async getMedicalStaff() {
+    const data = await $.get(`${config.apiPath}/api/medical_staff`);
+    this.setState({ staff: data });
+    console.log(data);
+  }
   async getMedicalStaffbyID(selectedStaffID) {
     // var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
     const data = await $.get(
@@ -554,66 +595,59 @@ class App extends Component {
         sex: data.Sex,
         staffID: data.Staff_ID
       });
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
-
   async getAppointmentbyID(selectedID, i) {
     // var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
-    const data = await $.get(
-      `${config.apiPath}/api/appoint`, { patient_id: selectedID }
-    );
-    console.log(data)
+    const data = await $.get(`${config.apiPath}/api/appoint`, {
+      patient_id: selectedID
+    });
+    console.log(data);
     try {
-      i = parseInt(i) - 1
+      i = parseInt(i) - 1;
       this.setState({
         get_appointment_date: data[i].Appointment_date,
         get_appointment_doctorID: data[i].Doctor_ID,
         get_appointment_doctorEmail: data[i].Doctor_email,
         get_appointment_doctorFirstName: data[i].Doctor_first_name,
         get_appointment_doctorLastName: data[i].Doctor_last_name,
-        get_appointment_appointID: data[i].Appoint_ID,
+        get_appointment_appointID: data[i].Appoint_ID
       });
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
   async postAppointment(value2) {
-    console.log("WTF")
+    console.log("WTF");
     const res = await $.post(`${config.apiPath}/api/appoint`, {
       doctor_id: this.state.post_appointment_doctorID,
       patient_id: this.state.post_appointment_patientID,
       // appoint_date: new Date("05 October 2011 14:48 UTC").toISOString(),
-      appoint_date: new Date(this.state.post_appointment_date + " UTC").toISOString(),
+      appoint_date: new Date(
+        this.state.post_appointment_date + " UTC"
+      ).toISOString()
     });
   }
 
   async getLocationbyDeptName(Dept_Name) {
-    const data = await $.get(
-      `${config.apiPath}/api/department`
-    );
+    const data = await $.get(`${config.apiPath}/api/department`);
     console.log("555");
     for (let i = 0; i < data.length; i++) {
       if (data[i].DepartmentName == Dept_Name) {
         this.setState({
           showDLocation: data[i].Location
         });
-        break
+        break;
       }
     }
   }
 
   async getDeptNamebyMID(Maneger_ID2) {
-    const data = await $.get(
-      `${config.apiPath}/api/department`
-    );
+    const data = await $.get(`${config.apiPath}/api/department`);
     for (let i = 0; i < data.length; i++) {
       if (data[i].Manager_ID == Maneger_ID2) {
         this.setState({
           showDeptName: data[i].DepartmentName
         });
-        break
+        break;
       }
     }
   }
@@ -654,20 +688,18 @@ class App extends Component {
 
   async getTreatmentbyID(selectedID, i) {
     // var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
-    const data = await $.get(
-      `${config.apiPath}/api/treatment`, { patient_id: this.state.get_treatment_patientID }
-    );
-    console.log(data)
+    const data = await $.get(`${config.apiPath}/api/treatment`, {
+      patient_id: this.state.get_treatment_patientID
+    });
+    console.log(data);
     try {
-      i = parseInt(i) - 1
+      i = parseInt(i) - 1;
       this.setState({
         get_treatment_doctorID: data[i].Doctor_ID,
         get_treatment_cost: data[i].Treatment_cost,
-        get_treatment_symptom: data[i].Symptom,
+        get_treatment_symptom: data[i].Symptom
       });
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
   async postPrescribe(value2) {
@@ -675,7 +707,7 @@ class App extends Component {
       doctor_id: this.state.post_prescribe_doctorID,
       patient_id: this.state.post_prescribe_patientID,
       medicine_id: this.state.post_prescribe_medicineID,
-      quantity: this.state.post_prescribe_quantity,
+      quantity: this.state.post_prescribe_quantity
     });
   }
 
@@ -688,33 +720,98 @@ class App extends Component {
     return returnVal;
   }
 
-
-
   render() {
     console.log(this.state);
     return (
       <Container>
-        {this.state.isActive != 0 && <Header>Hospital Management System</Header>}
-        {this.state.isActive == 0 && 
-        <Header2>
-          <div>Hospital</div>
-          <div>Management</div>
-          <div>System</div><br />
-        </Header2>}
+        {this.state.isActive != 0 && (
+          <Header>Hospital Management System</Header>
+        )}
+        {this.state.isActive == 0 && (
+          <Header2>
+            <div>Hospital</div>
+            <div>Management</div>
+            <div>System</div>
+            <br />
+          </Header2>
+        )}
         <NavBar>
           <ul>
-            <li><a href="#home" className={this.state.isActive == 0 ? 'active' : ''} onClick={() => { this.setState({ isActive: 0 }) }}>Home</a></li>
-            <li><a href="#MedicalStaff" className={this.state.isActive == 1 ? 'active' : ''} onClick={() => { this.setState({ isActive: 1 }) }}>MedicalStaff</a></li>
-            <li><a href="#department" className={this.state.isActive == 2 ? 'active' : ''} onClick={() => { this.setState({ isActive: 2 }) }}>Department</a></li>
-            <li><a href="#patient" className={this.state.isActive == 3 ? 'active' : ''} onClick={() => { this.setState({ isActive: 3 }) }}>Patient</a></li>
-            <li><a href="#appointment" className={this.state.isActive == 4 ? 'active' : ''} onClick={() => { this.setState({ isActive: 4 }) }}>Appointment</a></li>
-            <li><a href="#treatment" className={this.state.isActive == 5 ? 'active' : ''} onClick={() => { this.setState({ isActive: 5 }) }}>Treatment</a></li>
+            <li>
+              <a
+                href="#home"
+                className={this.state.isActive == 0 ? "active" : ""}
+                onClick={() => {
+                  this.setState({ isActive: 0 });
+                }}
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#MedicalStaff"
+                className={this.state.isActive == 1 ? "active" : ""}
+                onClick={() => {
+                  this.setState({ isActive: 1 });
+                }}
+              >
+                MedicalStaff
+              </a>
+            </li>
+            <li>
+              <a
+                href="#department"
+                className={this.state.isActive == 2 ? "active" : ""}
+                onClick={() => {
+                  this.setState({ isActive: 2 });
+                }}
+              >
+                Department
+              </a>
+            </li>
+            <li>
+              <a
+                href="#patient"
+                className={this.state.isActive == 3 ? "active" : ""}
+                onClick={() => {
+                  this.setState({ isActive: 3 });
+                }}
+              >
+                Patient
+              </a>
+            </li>
+            <li>
+              <a
+                href="#appointment"
+                className={this.state.isActive == 4 ? "active" : ""}
+                onClick={() => {
+                  this.setState({ isActive: 4 });
+                }}
+              >
+                Appointment
+              </a>
+            </li>
+            <li>
+              <a
+                href="#treatment"
+                className={this.state.isActive == 5 ? "active" : ""}
+                onClick={() => {
+                  this.setState({ isActive: 5 });
+                }}
+              >
+                Treatment
+              </a>
+            </li>
           </ul>
         </NavBar>
-        {this.state.isActive == 0 &&
-          <Image2 src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg" class="center" />
-        }
-        {this.state.isActive == 1 &&
+        {this.state.isActive == 0 && (
+          <Image2
+            src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg"
+            class="center"
+          />
+        )}
+        {this.state.isActive == 1 && (
           <Panel>
             <h2>What do you want to know?</h2>
             {/* <div class="input1">
@@ -728,24 +825,25 @@ class App extends Component {
           </div> */}
             <label>
               selectedStaffID :
-                <input
+              <input
                 type="text"
                 value={this.state.selectedStaffID}
-                onChange={this.handleChange('selectedStaffID')}
+                onChange={this.handleChange("selectedStaffID")}
               />
             </label>
             <Button
-              onClick={() => this.getMedicalStaffbyID(this.state.selectedStaffID)}
+              onClick={() =>
+                this.getMedicalStaffbyID(this.state.selectedStaffID)
+              }
             >
               {/* <Button
             onClick={() => this.getAppointmentbyID(this.state.selectedStaffID)}
-          > */}
-              {" "}
+          > */}{" "}
               Show Pls
-          </Button>
+            </Button>
           </Panel>
-        }
-        {this.state.isActive == 1 &&
+        )}
+        {this.state.isActive == 1 && (
           <Panel2>
             <h1> Show Medical Staff Data as you requested</h1>
             <div>
@@ -772,8 +870,8 @@ class App extends Component {
               <div>{"Show " + "Staff_ID:  " + this.state.staffID}</div>
             </div>
           </Panel2>
-        }
-        {this.state.isActive == 1 &&
+        )}
+        {this.state.isActive == 1 && (
           <Panel3>
             <h1>Submit Medical Staff Data to Server</h1>
             <form onSubmit={this.handleSubmit}>
@@ -791,10 +889,10 @@ class App extends Component {
               <div>
                 <label>
                   First_name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_firstName}
-                    onChange={this.handleChange('post_medical_firstName')}
+                    onChange={this.handleChange("post_medical_firstName")}
                   />
                 </label>
               </div>
@@ -802,10 +900,10 @@ class App extends Component {
               <div>
                 <label>
                   Last_name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_lastName}
-                    onChange={this.handleChange('post_medical_lastName')}
+                    onChange={this.handleChange("post_medical_lastName")}
                   />
                 </label>
               </div>
@@ -813,10 +911,10 @@ class App extends Component {
               <div>
                 <label>
                   Email:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_email}
-                    onChange={this.handleChange('post_medical_email')}
+                    onChange={this.handleChange("post_medical_email")}
                   />
                 </label>
               </div>
@@ -824,10 +922,10 @@ class App extends Component {
               <div>
                 <label>
                   Birthdate:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_birthDate}
-                    onChange={this.handleChange('post_medical_birthDate')}
+                    onChange={this.handleChange("post_medical_birthDate")}
                   />
                 </label>
               </div>
@@ -835,10 +933,10 @@ class App extends Component {
               <div>
                 <label>
                   Address:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_address}
-                    onChange={this.handleChange('post_medical_address')}
+                    onChange={this.handleChange("post_medical_address")}
                   />
                 </label>
               </div>
@@ -846,10 +944,10 @@ class App extends Component {
               <div>
                 <label>
                   Medical_type:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_medicalType}
-                    onChange={this.handleChange('post_medical_medicalType')}
+                    onChange={this.handleChange("post_medical_medicalType")}
                   />
                 </label>
               </div>
@@ -857,10 +955,10 @@ class App extends Component {
               <div>
                 <label>
                   Home_tel:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_homeTel}
-                    onChange={this.handleChange('post_medical_homeTel')}
+                    onChange={this.handleChange("post_medical_homeTel")}
                   />
                 </label>
               </div>
@@ -868,10 +966,10 @@ class App extends Component {
               <div>
                 <label>
                   Mobile_tel:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_mobileTel}
-                    onChange={this.handleChange('post_medical_mobileTel')}
+                    onChange={this.handleChange("post_medical_mobileTel")}
                   />
                 </label>
               </div>
@@ -879,10 +977,10 @@ class App extends Component {
               <div>
                 <label>
                   Sex:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_medical_sex}
-                    onChange={this.handleChange('post_medical_sex')}
+                    onChange={this.handleChange("post_medical_sex")}
                   />
                 </label>
               </div>
@@ -890,10 +988,10 @@ class App extends Component {
               <div>
                 <label>
                   Salary:
-                <input
+                  <input
                     type="number"
                     value={this.state.post_medical_salary}
-                    onChange={this.handleChange('post_medical_salary')}
+                    onChange={this.handleChange("post_medical_salary")}
                   />
                 </label>
               </div>
@@ -907,18 +1005,18 @@ class App extends Component {
               </div>
             </form>
           </Panel3>
-        }
-        {this.state.isActive == 1 &&
+        )}
+        {this.state.isActive == 1 && (
           <Panel4>
             <h1>Edit Medical Staff Data as you want</h1>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label>
                   Staff_ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_staffID}
-                    onChange={this.handleChange('patch_medical_staffID')}
+                    onChange={this.handleChange("patch_medical_staffID")}
                   />
                 </label>
               </div>
@@ -926,10 +1024,10 @@ class App extends Component {
               <div>
                 <label>
                   First_name:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_firstName}
-                    onChange={this.handleChange('patch_medical_firstName')}
+                    onChange={this.handleChange("patch_medical_firstName")}
                   />
                 </label>
               </div>
@@ -937,10 +1035,10 @@ class App extends Component {
               <div>
                 <label>
                   Last_name:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_lastName}
-                    onChange={this.handleChange('patch_medical_lastName')}
+                    onChange={this.handleChange("patch_medical_lastName")}
                   />
                 </label>
               </div>
@@ -948,10 +1046,10 @@ class App extends Component {
               <div>
                 <label>
                   Email:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_email}
-                    onChange={this.handleChange('patch_medical_email')}
+                    onChange={this.handleChange("patch_medical_email")}
                   />
                 </label>
               </div>
@@ -959,10 +1057,10 @@ class App extends Component {
               <div>
                 <label>
                   Birthdate:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_birthDate}
-                    onChange={this.handleChange('patch_medical_birthDate')}
+                    onChange={this.handleChange("patch_medical_birthDate")}
                   />
                 </label>
               </div>
@@ -970,10 +1068,10 @@ class App extends Component {
               <div>
                 <label>
                   Address:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_address}
-                    onChange={this.handleChange('patch_medical_address')}
+                    onChange={this.handleChange("patch_medical_address")}
                   />
                 </label>
               </div>
@@ -981,10 +1079,10 @@ class App extends Component {
               <div>
                 <label>
                   Medical_type:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_medicalType}
-                    onChange={this.handleChange('patch_medical_medicalType')}
+                    onChange={this.handleChange("patch_medical_medicalType")}
                   />
                 </label>
               </div>
@@ -992,10 +1090,10 @@ class App extends Component {
               <div>
                 <label>
                   Home_tel:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_homeTel}
-                    onChange={this.handleChange('patch_medical_homeTel')}
+                    onChange={this.handleChange("patch_medical_homeTel")}
                   />
                 </label>
               </div>
@@ -1003,10 +1101,10 @@ class App extends Component {
               <div>
                 <label>
                   Mobile_tel:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_mobileTel}
-                    onChange={this.handleChange('patch_medical_mobileTel')}
+                    onChange={this.handleChange("patch_medical_mobileTel")}
                   />
                 </label>
               </div>
@@ -1014,10 +1112,10 @@ class App extends Component {
               <div>
                 <label>
                   Sex:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_medical_sex}
-                    onChange={this.handleChange('patch_medical_sex')}
+                    onChange={this.handleChange("patch_medical_sex")}
                   />
                 </label>
               </div>
@@ -1025,10 +1123,10 @@ class App extends Component {
               <div>
                 <label>
                   Salary:
-                <input
+                  <input
                     type="number"
                     value={this.state.patch_medical_salary}
-                    onChange={this.handleChange('patch_medical_salary')}
+                    onChange={this.handleChange("patch_medical_salary")}
                   />
                 </label>
               </div>
@@ -1042,18 +1140,18 @@ class App extends Component {
               </div>
             </form>
           </Panel4>
-        }
-        {this.state.isActive == 1 &&
+        )}
+        {this.state.isActive == 1 && (
           <Panel5>
             <h1> Show Medical Staff Data that you Deleted</h1>
             <div>
               <div>
                 <label>
                   Staff_ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.delete_medical_staffID}
-                    onChange={this.handleChange('delete_medical_staffID')}
+                    onChange={this.handleChange("delete_medical_staffID")}
                   />
                 </label>
                 <input
@@ -1066,55 +1164,119 @@ class App extends Component {
               {/* </div> */}
             </div>
           </Panel5>
-        }
-        {this.state.isActive == 2 &&
+        )}
+        {this.state.isActive == 1 && (
+          <PanelTable>
+            <div style={{ display: "block" , overflowY: 'scroll' , overflowX: 'auto' , height: '100%' }}>
+              <h1>All Staff</h1>
+              <table className={"table table-striped table-hover"}>
+                <thead>
+                  <tr>
+                    <th>Staff_ID</th>
+                    <th>First_name</th>
+                    <th>Last_name</th>
+                    <th>Medical_type</th>
+                    <th>Address</th>
+                    <th>Birthdate</th>
+                    <th>Email</th>
+                    <th>Mobile_tel</th>
+                    <th>Home_tel</th>
+                    <th>Salary</th>
+                    <th>Sex</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.staff.map(
+                    (
+                      {
+                        Address,
+                        Birthdate,
+                        Email,
+                        First_name,
+                        Home_tel,
+                        Last_name,
+                        Medical_type,
+                        Mobile_tel,
+                        Salary,
+                        Sex,
+                        Staff_ID
+                      },
+                      index
+                    ) => {
+                      return (
+                        <tr key={Staff_ID}>
+                          <td>{Staff_ID}</td>
+                          <td>{First_name}</td>
+                          <td>{Last_name}</td>
+                          <td>{Medical_type}</td>
+                          <td>{Address}</td>
+                          <td>{Birthdate}</td>
+                          <td>{Email}</td>
+                          <td>{Mobile_tel}</td>
+                          <td>{Home_tel}</td>
+                          <td>{Salary}</td>
+                          <td>{Sex}</td>
+                        </tr>
+                      );
+                    }
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </PanelTable>
+        )}
+        {this.state.isActive == 2 && (
           <Panel_Dept>
             <div>
-              < h2>Department Session</h2>
+              <h2>Department Session</h2>
               <Panel_Dept1>
                 <div class="input1">
                   Put the depratment's name : &nbsp;
-              <label>
+                  <label>
                     <input
                       type="text"
                       value={this.state.selectedDeptName}
-                      onChange={this.handleChange('selectedDeptName')}
+                      onChange={this.handleChange("selectedDeptName")}
                     />
                   </label>
                 </div>
                 <Button
-                  onClick={() => this.getLocationbyDeptName(this.state.selectedDeptName)}
+                  onClick={() =>
+                    this.getLocationbyDeptName(this.state.selectedDeptName)
+                  }
                 >
                   {" "}
                   Search
-            </Button>
+                </Button>
                 <br />
                 <div>{"Location: " + this.state.showDLocation}</div>
               </Panel_Dept1>
               <Panel_Dept2>
                 <div class="input1">
                   Put the maneger's ID : &nbsp;
-              <label>
+                  <label>
                     <input
                       type="text"
                       value={this.state.selectedManagerID}
-                      onChange={this.handleChange('selectedManagerID')}
+                      onChange={this.handleChange("selectedManagerID")}
                     />
                   </label>
                 </div>
                 <Button
-                  onClick={() => this.getDeptNamebyMID(this.state.selectedManagerID)}
+                  onClick={() =>
+                    this.getDeptNamebyMID(this.state.selectedManagerID)
+                  }
                 >
                   {" "}
                   Search
-            </Button>
+                </Button>
                 <br />
                 <div>{"Department: " + this.state.showDeptName}</div>
               </Panel_Dept2>
             </div>
           </Panel_Dept>
-        }
-        {this.state.isActive == 3 &&
+        )}
+        {this.state.isActive == 3 && (
           <Panel_Patient1>
             <div class="input1">
               Please key patient ID : &nbsp;
@@ -1122,12 +1284,14 @@ class App extends Component {
                 <input
                   type="text"
                   value={this.state.selectedPatientID}
-                  onChange={this.handleChange('selectedPatientID')}
+                  onChange={this.handleChange("selectedPatientID")}
                 />
               </label>
             </div>
             <Button
-              onClick={() => this.getInformbyPatientID(this.state.selectedPatientID)}
+              onClick={() =>
+                this.getInformbyPatientID(this.state.selectedPatientID)
+              }
             >
               {" "}
               Search
@@ -1147,25 +1311,32 @@ class App extends Component {
               <br />
               <div>{"Phone Number: " + this.state.patient_phone_number}</div>
               <br />
-              <div>{"Parent Name: " + this.state.parent_first_name + " " + this.state.parent_last_name}</div>
+              <div>
+                {"Parent Name: " +
+                  this.state.parent_first_name +
+                  " " +
+                  this.state.parent_last_name}
+              </div>
               <br />
-              <div>{"Parent Phone Number:  " + this.state.parent_phone_number}</div>
+              <div>
+                {"Parent Phone Number:  " + this.state.parent_phone_number}
+              </div>
               <br />
               <div>{"Allergy Name:  " + this.state.allergy_name}</div>
             </div>
           </Panel_Patient1>
-        }
-        {this.state.isActive == 3 &&
+        )}
+        {this.state.isActive == 3 && (
           <Panel_Patient2>
             <h2>Add New Patient</h2>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label>
                   First_name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Patient_first_name}
-                    onChange={this.handleChange('post_Patient_first_name')}
+                    onChange={this.handleChange("post_Patient_first_name")}
                   />
                 </label>
               </div>
@@ -1173,10 +1344,10 @@ class App extends Component {
               <div>
                 <label>
                   Last_name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Patient_last_name}
-                    onChange={this.handleChange('post_Patient_last_name')}
+                    onChange={this.handleChange("post_Patient_last_name")}
                   />
                 </label>
               </div>
@@ -1184,10 +1355,10 @@ class App extends Component {
               <div>
                 <label>
                   Sex:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Patient_sex}
-                    onChange={this.handleChange('post_Patient_sex')}
+                    onChange={this.handleChange("post_Patient_sex")}
                   />
                   <div>(eg. Male,Female )</div>
                 </label>
@@ -1196,10 +1367,10 @@ class App extends Component {
               <div>
                 <label>
                   Birthdate:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Patient_Birthdate}
-                    onChange={this.handleChange('post_Patient_Birthdate')}
+                    onChange={this.handleChange("post_Patient_Birthdate")}
                   />
                   <div>(eg. yyyy-mm-dd)</div>
                 </label>
@@ -1208,10 +1379,10 @@ class App extends Component {
               <div>
                 <label>
                   Phone Number:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Patient_phone_number}
-                    onChange={this.handleChange('post_Patient_phone_number')}
+                    onChange={this.handleChange("post_Patient_phone_number")}
                   />
                 </label>
               </div>
@@ -1219,10 +1390,10 @@ class App extends Component {
               <div>
                 <label>
                   Parent First Name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Parent_first_name}
-                    onChange={this.handleChange('post_Parent_first_name')}
+                    onChange={this.handleChange("post_Parent_first_name")}
                   />
                 </label>
               </div>
@@ -1230,10 +1401,10 @@ class App extends Component {
               <div>
                 <label>
                   Parent Last Name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Parent_last_name}
-                    onChange={this.handleChange('post_Parent_last_name')}
+                    onChange={this.handleChange("post_Parent_last_name")}
                   />
                 </label>
               </div>
@@ -1241,10 +1412,10 @@ class App extends Component {
               <div>
                 <label>
                   Parent Phone Number:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Parent_phone_number}
-                    onChange={this.handleChange('post_Parent_phone_number')}
+                    onChange={this.handleChange("post_Parent_phone_number")}
                   />
                 </label>
               </div>
@@ -1252,10 +1423,10 @@ class App extends Component {
               <div>
                 <label>
                   Allergy Name:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_Allergy_name}
-                    onChange={this.handleChange('post_Allergy_name')}
+                    onChange={this.handleChange("post_Allergy_name")}
                   />
                 </label>
               </div>
@@ -1271,63 +1442,86 @@ class App extends Component {
               </div>
             </form>
           </Panel_Patient2>
-        }
-        {this.state.isActive == 4 &&
+        )}
+        {this.state.isActive == 4 && (
           <Panel_Appoint1>
             <h1> Show Appointment</h1>
             <div>
               <div>
                 <label>
                   Patient_ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.selectedPatientIDAppointment}
-                    onChange={this.handleChange('selectedPatientIDAppointment')}
+                    onChange={this.handleChange("selectedPatientIDAppointment")}
                   />
                 </label>
                 <label>
                   Queue:
-                <input
+                  <input
                     type="text"
                     value={this.state.selectedAppointmentQueue}
-                    onChange={this.handleChange('selectedAppointmentQueue')}
+                    onChange={this.handleChange("selectedAppointmentQueue")}
                   />
                 </label>
                 <input
                   type="submit"
                   value="Submit"
-                  onClick={() => this.getAppointmentbyID(this.state.selectedPatientIDAppointment, this.state.selectedAppointmentQueue)}
+                  onClick={() =>
+                    this.getAppointmentbyID(
+                      this.state.selectedPatientIDAppointment,
+                      this.state.selectedAppointmentQueue
+                    )
+                  }
                 />
               </div>
               {/* <div> */}
               <br />
               <div>{"Show " + "Date: " + this.state.get_appointment_date}</div>
               <br />
-              <div>{"Show " + "Doctor ID: " + this.state.get_appointment_doctorID}</div>
+              <div>
+                {"Show " + "Doctor ID: " + this.state.get_appointment_doctorID}
+              </div>
               <br />
-              <div>{"Show " + "Doctor Email: " + this.state.get_appointment_doctorEmail}</div>
+              <div>
+                {"Show " +
+                  "Doctor Email: " +
+                  this.state.get_appointment_doctorEmail}
+              </div>
               <br />
-              <div>{"Show " + "Doctor First_name: " + this.state.get_appointment_doctorFirstName}</div>
+              <div>
+                {"Show " +
+                  "Doctor First_name: " +
+                  this.state.get_appointment_doctorFirstName}
+              </div>
               <br />
-              <div>{"Show " + "Doctor Last_name: " + this.state.get_appointment_doctorLastName}</div>
+              <div>
+                {"Show " +
+                  "Doctor Last_name: " +
+                  this.state.get_appointment_doctorLastName}
+              </div>
               <br />
-              <div>{"Show " + "Appoint ID:  " + this.state.get_appointment_appointID}</div>
+              <div>
+                {"Show " +
+                  "Appoint ID:  " +
+                  this.state.get_appointment_appointID}
+              </div>
               <br />
               {/* </div> */}
             </div>
           </Panel_Appoint1>
-        }
-        {this.state.isActive == 4 &&
+        )}
+        {this.state.isActive == 4 && (
           <Panel_Appoint2>
             <h1> Add Appointment for that Patient</h1>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label>
                   Patient ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_appointment_patientID}
-                    onChange={this.handleChange('post_appointment_patientID')}
+                    onChange={this.handleChange("post_appointment_patientID")}
                   />
                 </label>
               </div>
@@ -1335,10 +1529,10 @@ class App extends Component {
               <div>
                 <label>
                   Doctor ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_appointment_doctorID}
-                    onChange={this.handleChange('post_appointment_doctorID')}
+                    onChange={this.handleChange("post_appointment_doctorID")}
                   />
                 </label>
               </div>
@@ -1346,10 +1540,10 @@ class App extends Component {
               <div>
                 <label>
                   Date And Time:
-                <input
+                  <input
                     type="number"
                     value={this.state.post_appointment_date}
-                    onChange={this.handleChange('post_appointment_date')}
+                    onChange={this.handleChange("post_appointment_date")}
                   />
                 </label>
               </div>
@@ -1363,18 +1557,18 @@ class App extends Component {
               </div>
             </form>
           </Panel_Appoint2>
-        }
-        {this.state.isActive == 4 &&
+        )}
+        {this.state.isActive == 4 && (
           <Panel_Appoint3>
             <h1> Update Appointment for that Patient</h1>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label>
                   Appoint ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_appointment_appointID}
-                    onChange={this.handleChange('patch_appointment_appointID')}
+                    onChange={this.handleChange("patch_appointment_appointID")}
                   />
                 </label>
               </div>
@@ -1382,10 +1576,10 @@ class App extends Component {
               <div>
                 <label>
                   Patient ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_appointment_patientID}
-                    onChange={this.handleChange('patch_appointment_patientID')}
+                    onChange={this.handleChange("patch_appointment_patientID")}
                   />
                 </label>
               </div>
@@ -1393,10 +1587,10 @@ class App extends Component {
               <div>
                 <label>
                   Doctor ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_appointment_doctorID}
-                    onChange={this.handleChange('patch_appointment_doctorID')}
+                    onChange={this.handleChange("patch_appointment_doctorID")}
                   />
                 </label>
               </div>
@@ -1404,10 +1598,10 @@ class App extends Component {
               <div>
                 <label>
                   Date And Time:
-                <input
+                  <input
                     type="text"
                     value={this.state.patch_appointment_date}
-                    onChange={this.handleChange('patch_appointment_date')}
+                    onChange={this.handleChange("patch_appointment_date")}
                   />
                 </label>
               </div>
@@ -1421,26 +1615,28 @@ class App extends Component {
               </div>
             </form>
           </Panel_Appoint3>
-        }
-        {this.state.isActive == 4 &&
+        )}
+        {this.state.isActive == 4 && (
           <Panel_Appoint4>
             <h1> Delete Appointment</h1>
             <div>
               <div>
                 <label>
                   Patient_ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.delete_appointment_patientID}
-                    onChange={this.handleChange('delete_appointment_patientID')}
+                    onChange={this.handleChange("delete_appointment_patientID")}
                   />
                 </label>
                 <label>
                   Appoint_ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.delete_appointment_appointmentID}
-                    onChange={this.handleChange('delete_appointment_appointmentID')}
+                    onChange={this.handleChange(
+                      "delete_appointment_appointmentID"
+                    )}
                   />
                 </label>
                 <input
@@ -1451,56 +1647,65 @@ class App extends Component {
               </div>
             </div>
           </Panel_Appoint4>
-        }
-        {this.state.isActive == 5 &&
+        )}
+        {this.state.isActive == 5 && (
           <Panel_Appoint5>
             <h1> Show Treatment</h1>
             <div>
               <div>
                 <label>
                   Patient_ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.get_treatment_patientID}
-                    onChange={this.handleChange('get_treatment_patientID')}
+                    onChange={this.handleChange("get_treatment_patientID")}
                   />
                 </label>
                 <label>
                   Queue:
-                <input
+                  <input
                     type="text"
                     value={this.state.get_treatment_queue}
-                    onChange={this.handleChange('get_treatment_queue')}
+                    onChange={this.handleChange("get_treatment_queue")}
                   />
                 </label>
                 <input
                   type="submit"
                   value="Submit"
-                  onClick={() => this.getTreatmentbyID(this.state.get_treatment_patientID, this.state.get_treatment_queue)}
+                  onClick={() =>
+                    this.getTreatmentbyID(
+                      this.state.get_treatment_patientID,
+                      this.state.get_treatment_queue
+                    )
+                  }
                 />
               </div>
               {/* <div> */}
               <br />
-              <div>{"Show " + "Doctor ID: " + this.state.get_treatment_doctorID}</div>
+              <div>
+                {"Show " + "Doctor ID: " + this.state.get_treatment_doctorID}
+              </div>
               <br />
               <div>{"Show " + "Cost: " + this.state.get_treatment_cost}</div>
               <br />
-              <div>{"Show " + "Symptom: " + this.state.get_treatment_symptom}</div>
+              <div>
+                {"Show " + "Symptom: " + this.state.get_treatment_symptom}
+              </div>
               {/* </div> */}
             </div>
           </Panel_Appoint5>
-        }
-        {this.state.isActive == 5 &&
+        )}
+        {this.state.isActive == 5 && (
           <Panel_Appoint6>
             <h1> Prescribe Medicine</h1>
             <form onSubmit={this.handleSubmit}>
               <div>
                 <label>
                   Patient ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_prescribe_patientID}
-                    onChange={this.handleChange('post_prescribe_patientID')}
+                    onChange={this.handleChange("post_prescribe_patientID")}
                   />
                 </label>
               </div>
@@ -1508,10 +1713,10 @@ class App extends Component {
               <div>
                 <label>
                   Doctor ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_prescribe_doctorID}
-                    onChange={this.handleChange('post_prescribe_doctorID')}
+                    onChange={this.handleChange("post_prescribe_doctorID")}
                   />
                 </label>
               </div>
@@ -1519,10 +1724,10 @@ class App extends Component {
               <div>
                 <label>
                   Medicine ID:
-                <input
+                  <input
                     type="text"
                     value={this.state.post_prescribe_medicineID}
-                    onChange={this.handleChange('post_prescribe_medicineID')}
+                    onChange={this.handleChange("post_prescribe_medicineID")}
                   />
                 </label>
               </div>
@@ -1530,10 +1735,10 @@ class App extends Component {
               <div>
                 <label>
                   Quantity:
-                <input
+                  <input
                     type="number"
                     value={this.state.post_prescribe_quantity}
-                    onChange={this.handleChange('post_prescribe_quantity')}
+                    onChange={this.handleChange("post_prescribe_quantity")}
                   />
                 </label>
               </div>
@@ -1547,7 +1752,7 @@ class App extends Component {
               </div>
             </form>
           </Panel_Appoint6>
-        }
+        )}
       </Container>
     );
   }
