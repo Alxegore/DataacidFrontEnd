@@ -46,7 +46,7 @@ const Header = styled.div`
   font-family: Impact, Charcoal, sans-serif;
 `;
 
-const NavBar = styled.div`
+const MenuBar = styled.div`
   grid-column: 1 / span 2;
   grid-row: 1;
   overflow: hidden;
@@ -79,7 +79,8 @@ const Panel2 = styled.div`
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 550px;
+  height: 350px;
+  overflow-y: scroll;
   padding: 15px;
   div {
     display: inline-block;
@@ -96,7 +97,8 @@ const Panel3 = styled.div`
   grid-row: 4;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 550px;
+  height: 350px;
+  overflow-y: scroll;
   padding: 15px;
   div {
     display: inline-block;
@@ -114,7 +116,8 @@ const Panel4 = styled.div`
   grid-row: 5;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 550px;
+  height: 350px;
+  overflow-y: scroll;
   padding: 15px;
   div {
     display: inline-block;
@@ -131,7 +134,7 @@ const Panel5 = styled.div`
   grid-row: 5;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 550px;
+  height: 350px;
   padding: 15px;
   div {
     display: inline-block;
@@ -204,7 +207,7 @@ const Panel_Dept1 = styled.div`
   grid-row: 4;
   background: rgba(238, 223, 204, 1);
   overflow: hidden;
-  height: 100px;
+  height: 130px;
   padding: 15px;
   div {
     display: inline-block;
@@ -221,7 +224,7 @@ const Panel_Dept2 = styled.div`
   grid-row: 4;
   background: rgba(238, 223, 204, 1);
   overflow: hidden;
-  height: 100px;
+  height: 130px;
   padding: 15px;
   div {
     display: inline-block;
@@ -239,7 +242,7 @@ const Panel_Patient1 = styled.div`
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 550px;
+  height: 700px;
   padding: 15px;
   div {
     display: inline-block;
@@ -256,7 +259,7 @@ const Panel_Patient2 = styled.div`
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 550px;
+  height: 700px;
   padding: 15px;
   div {
     display: inline-block;
@@ -270,11 +273,11 @@ const Panel_Patient2 = styled.div`
 
 const Panel_Appoint1 = styled.div`
   border-radius: 20px;
-  grid-column: 1;
-  grid-row: 4;
+  grid-column: 1 / span 2;
+  grid-row: 5;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 350px;
+  height: 200px;
   padding: 15px;
   div {
     display: inline-block;
@@ -287,8 +290,8 @@ const Panel_Appoint1 = styled.div`
 `;
 const Panel_Appoint2 = styled.div`
   border-radius: 20px;
-  grid-column: 2;
-  grid-row: 4;
+  grid-column: 1;
+  grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
   height: 350px;
@@ -304,11 +307,12 @@ const Panel_Appoint2 = styled.div`
 `;
 const Panel_Appoint3 = styled.div`
   border-radius: 20px;
-  grid-column: 1;
+  grid-column: 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 250px;
+  overflow-y: scroll;
+  height: 350px;
   padding: 15px;
   div {
     display: inline-block;
@@ -321,11 +325,11 @@ const Panel_Appoint3 = styled.div`
 `;
 const Panel_Appoint4 = styled.div`
   border-radius: 20px;
-  grid-column: 2;
-  grid-row: 3;
+  grid-column: 1 / span 2;
+  grid-row: 4;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
-  height: 250px;
+  height: 200px;
   padding: 15px;
   div {
     display: inline-block;
@@ -336,12 +340,13 @@ const Panel_Appoint4 = styled.div`
     margin-left: 20px;
   }
 `;
-const Panel_Appoint5 = styled.div`
+const Panel_Treatment1 = styled.div`
   border-radius: 20px;
   grid-column: 1;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
+  overflow-y: scroll;
   height: 250px;
   padding: 15px;
   div {
@@ -353,12 +358,13 @@ const Panel_Appoint5 = styled.div`
     margin-left: 20px;
   }
 `;
-const Panel_Appoint6 = styled.div`
+const Panel_Treatment2 = styled.div`
   border-radius: 20px;
   grid-column: 2;
   grid-row: 3;
   background: rgba(205, 192, 176, 1);
   overflow: hidden;
+  overflow-y: scroll;
   height: 250px;
   padding: 15px;
   div {
@@ -440,6 +446,7 @@ class App extends Component {
 
       selectedPatientIDAppointment: "",
       selectedAppointmentQueue: "",
+      appointment: [],
       get_appointment_date: "",
       get_appointment_doctorID: "",
       get_appointment_doctorEmail: "",
@@ -597,22 +604,15 @@ class App extends Component {
       });
     } catch (error) {}
   }
-  async getAppointmentbyID(selectedID, i) {
+  async getAppointmentbyID(selectedID) {
     // var data = (await axios.get(`${config.apiPath}/api/medical_staff/` + selectedStaffID)).data;
     const data = await $.get(`${config.apiPath}/api/appoint`, {
       patient_id: selectedID
     });
-    console.log(data);
     try {
-      i = parseInt(i) - 1;
-      this.setState({
-        get_appointment_date: data[i].Appointment_date,
-        get_appointment_doctorID: data[i].Doctor_ID,
-        get_appointment_doctorEmail: data[i].Doctor_email,
-        get_appointment_doctorFirstName: data[i].Doctor_first_name,
-        get_appointment_doctorLastName: data[i].Doctor_last_name,
-        get_appointment_appointID: data[i].Appoint_ID
-      });
+      console.log("getappoint");
+      console.log(data);
+      this.setState({appointment: data});
     } catch (error) {}
   }
   async postAppointment(value2) {
@@ -735,7 +735,7 @@ class App extends Component {
             <br />
           </Header2>
         )}
-        <NavBar>
+        <MenuBar>
           <ul>
             <li>
               <a
@@ -792,7 +792,7 @@ class App extends Component {
                 Appointment
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href="#treatment"
                 className={this.state.isActive == 5 ? "active" : ""}
@@ -802,9 +802,9 @@ class App extends Component {
               >
                 Treatment
               </a>
-            </li>
+            </li> */}
           </ul>
-        </NavBar>
+        </MenuBar>
         {this.state.isActive == 0 && (
           <Image2
             src="http://expatincroatia.com/wp-content/uploads/2013/09/how-to-find-a-doctor-in-croatia.jpg"
@@ -1456,61 +1456,68 @@ class App extends Component {
                     onChange={this.handleChange("selectedPatientIDAppointment")}
                   />
                 </label>
-                <label>
-                  Queue:
-                  <input
-                    type="text"
-                    value={this.state.selectedAppointmentQueue}
-                    onChange={this.handleChange("selectedAppointmentQueue")}
-                  />
-                </label>
                 <input
                   type="submit"
                   value="Submit"
                   onClick={() =>
                     this.getAppointmentbyID(
-                      this.state.selectedPatientIDAppointment,
-                      this.state.selectedAppointmentQueue
+                      this.state.selectedPatientIDAppointment
                     )
                   }
                 />
               </div>
-              {/* <div> */}
-              <br />
-              <div>{"Show " + "Date: " + this.state.get_appointment_date}</div>
-              <br />
-              <div>
-                {"Show " + "Doctor ID: " + this.state.get_appointment_doctorID}
-              </div>
-              <br />
-              <div>
-                {"Show " +
-                  "Doctor Email: " +
-                  this.state.get_appointment_doctorEmail}
-              </div>
-              <br />
-              <div>
-                {"Show " +
-                  "Doctor First_name: " +
-                  this.state.get_appointment_doctorFirstName}
-              </div>
-              <br />
-              <div>
-                {"Show " +
-                  "Doctor Last_name: " +
-                  this.state.get_appointment_doctorLastName}
-              </div>
-              <br />
-              <div>
-                {"Show " +
-                  "Appoint ID:  " +
-                  this.state.get_appointment_appointID}
-              </div>
-              <br />
-              {/* </div> */}
             </div>
           </Panel_Appoint1>
         )}
+        {this.state.isActive == 4 &&(
+          <PanelTable>
+            <div style={{ display: "block" , overflowY: 'scroll' , overflowX: 'auto' , height: '100%' }}>
+              <table className={"table table-striped table-hover"}>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Doctor_ID</th>
+                    <th>Doctor Email</th>
+                    <th>Doctor First Name</th>
+                    <th>Doctor Last Name</th>
+                    <th>Appointment ID</th>
+                  </tr>
+                </thead>
+                  <tbody>
+                  {this.state.appointment.map(
+                    (
+                      {
+                        Appoint_ID,
+                        Appointment_date,
+                        Doctor_ID,
+                        Doctor_email,
+                        Doctor__first_name,
+                        Doctor_last_name,
+                        Doctor_sex,
+                        Patient_ID,
+                        Patient_first_name,
+                        Patient_last_name,
+                        Patient_sex
+                      },
+                      index
+                    ) => {
+                      return (
+                        <tr key={Appoint_ID}>
+                          <td>{Appointment_date}</td>
+                          <td>{Doctor_ID}</td>
+                          <td>{Doctor_email}</td>
+                          <td>{Doctor__first_name}</td>
+                          <td>{Doctor_last_name}</td>
+                          <td>{Appoint_ID}</td>
+                        </tr>
+                      );
+                    }
+                  )}
+                  </tbody>
+                </table>
+            </div>
+          </PanelTable>
+          )}
         {this.state.isActive == 4 && (
           <Panel_Appoint2>
             <h1> Add Appointment for that Patient</h1>
@@ -1649,7 +1656,7 @@ class App extends Component {
           </Panel_Appoint4>
         )}
         {this.state.isActive == 5 && (
-          <Panel_Appoint5>
+          <Panel_Treatment1>
             <h1> Show Treatment</h1>
             <div>
               <div>
@@ -1693,10 +1700,10 @@ class App extends Component {
               </div>
               {/* </div> */}
             </div>
-          </Panel_Appoint5>
+          </Panel_Treatment1>
         )}
         {this.state.isActive == 5 && (
-          <Panel_Appoint6>
+          <Panel_Treatment2>
             <h1> Prescribe Medicine</h1>
             <form onSubmit={this.handleSubmit}>
               <div>
@@ -1751,7 +1758,7 @@ class App extends Component {
                 />
               </div>
             </form>
-          </Panel_Appoint6>
+          </Panel_Treatment2>
         )}
       </Container>
     );
